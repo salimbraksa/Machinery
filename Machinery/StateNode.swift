@@ -8,7 +8,7 @@
 
 import Foundation
 
-infix operator -->
+infix operator =>
 
 open class StateNode<T: State>: NSObject {
     
@@ -45,7 +45,7 @@ open class StateNode<T: State>: NSObject {
     
     // MARK: - Transition Operators -
     
-    open static func --> (left: StateNode, right: StateNode) -> Transition<T> {
+    open static func => (left: StateNode, right: StateNode) -> Transition<T> {
         let transition = Transition<T>(source: left, destination: right)
         return transition
     }

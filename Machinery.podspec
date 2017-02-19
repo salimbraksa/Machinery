@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.summary = 'Simple State Machine in Swift'
   s.homepage = 'https://github.com/salimbraksa/Machinery'
   s.authors = { 'Salim Braksa' => 'salim@hiddenfounders.com' }
-  s.source = { :git => 'https://github.com/salimbraksa/Machinery', :tag => s.version }
+  s.source = { :git => 'https://github.com/salimbraksa/Machinery.git', :tag => s.version }
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
