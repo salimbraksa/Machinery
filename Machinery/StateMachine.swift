@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StateMachine<T: State> {
+open class StateMachine<T: State> {
     
     // MARK: - Properties
     
@@ -17,15 +17,15 @@ class StateMachine<T: State> {
     
     // MARK: - Initializer
     
-    init(initial: StateNode<T>) {
+    public init(initial: StateNode<T>) {
         self.currentStateNode = initial
     }
     
     // MARK: - Performing Transitions
     
-    func next(identifier: String) {
+    open func next(identifier: String) {
         
-        guard let destinationStateNode = currentStateNode.StateNode(withIdentifier: identifier)
+        guard let destinationStateNode = currentStateNode.stateNode(withIdentifier: identifier)
         else { return }
         let userInfo = ["source-state": currentStateNode.state, "dest-state": destinationStateNode.state]
         
@@ -39,7 +39,7 @@ class StateMachine<T: State> {
 
 // MARK: - Notifications -
 
-extension StateMachine {
+public extension StateMachine {
     
     // MARK: - Notifications Subscription
     

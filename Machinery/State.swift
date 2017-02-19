@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol State {
+public protocol State {
     
 }

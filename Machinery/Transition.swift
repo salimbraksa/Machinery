@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Transition<T: State> {
+open class Transition<T: State> {
     
     let source: StateNode<T>
     let desination: StateNode<T>
@@ -18,9 +18,9 @@ class Transition<T: State> {
         self.desination = destination
     }
     
-    func identified(by identifier: String?) {
+    open func identified(by identifier: String?) {
         let identifier = identifier ?? UUID().uuidString
-        let isWeak = desination.has(StateNode: source)
+        let isWeak = desination.has(stateNode: source)
         source.destinationStateNodes[identifier] = Container(value: desination, isWeak: isWeak)
     }
     

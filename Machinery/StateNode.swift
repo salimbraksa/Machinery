@@ -10,7 +10,7 @@ import Foundation
 
 infix operator -->
 
-class StateNode<T: State>: NSObject {
+open class StateNode<T: State>: NSObject {
     
     // MARK: - Properties -
     
@@ -24,28 +24,28 @@ class StateNode<T: State>: NSObject {
     
     // MARK: - Initializer -
     
-    init(state: T) {
+    public init(state: T) {
         self.state = state
     }
     
     // MARK: - Managing Destination State Containers -
     
-    func to(_ node: StateNode) -> Transition<T> {
+    open func to(_ node: StateNode) -> Transition<T> {
         let transition = Transition<T>(source: self, destination: node)
         return transition
     }
     
-    func StateNode(withIdentifier identifier: String) -> StateNode? {
+    func stateNode(withIdentifier identifier: String) -> StateNode? {
         return destinationStateNodes[identifier]?.value
     }
     
-    func has(StateNode: StateNode) -> Bool {
-        return destinationStateNodes.values.contains { $0.value == StateNode }
+    func has(stateNode: StateNode) -> Bool {
+        return destinationStateNodes.values.contains { $0.value == stateNode }
     }
     
     // MARK: - Transition Operators -
     
-    static func --> (left: StateNode, right: StateNode) -> Transition<T> {
+    open static func --> (left: StateNode, right: StateNode) -> Transition<T> {
         let transition = Transition<T>(source: left, destination: right)
         return transition
     }
@@ -56,6 +56,6 @@ class StateNode<T: State>: NSObject {
     
 }
 
-func ==<T: State> (left: Transition<T>, right: String?) {
+public func ==<T: State> (left: Transition<T>, right: String?) {
     left.identified(by: right)
 }

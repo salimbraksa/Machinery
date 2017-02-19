@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double MachineryVersionNumber;
 //! Project version string for Machinery.
 FOUNDATION_EXPORT const unsigned char MachineryVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Machinery/PublicHeader.h>
+// In this header, you should import all the open headers of your framework using statements like #import <Machinery/PublicHeader.h>
 
 
