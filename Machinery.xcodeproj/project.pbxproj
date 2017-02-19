@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		F4C782911E59430000AA8D8E /* Machinery.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7828F1E59430000AA8D8E /* Machinery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4C782AA1E59434700AA8D8E /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A31E59434700AA8D8E /* Container.swift */; };
+		F4C782AB1E59434700AA8D8E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A41E59434700AA8D8E /* State.swift */; };
+		F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A51E59434700AA8D8E /* StateMachine.swift */; };
+		F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */; };
+		F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A71E59434700AA8D8E /* StateNode.swift */; };
+		F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A81E59434700AA8D8E /* Subscriber.swift */; };
+		F4C782B01E59434700AA8D8E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A91E59434700AA8D8E /* Transition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F4C7828C1E59430000AA8D8E /* Machinery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Machinery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7828F1E59430000AA8D8E /* Machinery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Machinery.h; sourceTree = "<group>"; };
 		F4C782901E59430000AA8D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4C782A31E59434700AA8D8E /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		F4C782A41E59434700AA8D8E /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		F4C782A51E59434700AA8D8E /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineNotification.swift; sourceTree = "<group>"; };
+		F4C782A71E59434700AA8D8E /* StateNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateNode.swift; sourceTree = "<group>"; };
+		F4C782A81E59434700AA8D8E /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		F4C782A91E59434700AA8D8E /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +60,13 @@
 		F4C7828E1E59430000AA8D8E /* Machinery */ = {
 			isa = PBXGroup;
 			children = (
+				F4C782A31E59434700AA8D8E /* Container.swift */,
+				F4C782A41E59434700AA8D8E /* State.swift */,
+				F4C782A51E59434700AA8D8E /* StateMachine.swift */,
+				F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */,
+				F4C782A71E59434700AA8D8E /* StateNode.swift */,
+				F4C782A81E59434700AA8D8E /* Subscriber.swift */,
+				F4C782A91E59434700AA8D8E /* Transition.swift */,
 				F4C7828F1E59430000AA8D8E /* Machinery.h */,
 				F4C782901E59430000AA8D8E /* Info.plist */,
 			);
@@ -96,6 +117,7 @@
 					F4C7828B1E5942FF00AA8D8E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = H23V3D7985;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C782B01E59434700AA8D8E /* Transition.swift in Sources */,
+				F4C782AA1E59434700AA8D8E /* Container.swift in Sources */,
+				F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */,
+				F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */,
+				F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */,
+				F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */,
+				F4C782AB1E59434700AA8D8E /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +269,7 @@
 		F4C782951E59430000AA8D8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H23V3D7985;
@@ -252,6 +282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.NSSoftware.Machinery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +290,7 @@
 		F4C782961E59430000AA8D8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H23V3D7985;
