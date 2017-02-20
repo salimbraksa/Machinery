@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405D1E5A670E00484F31 /* Graph.swift */; };
 		F4A840601E5A671A00484F31 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405F1E5A671A00484F31 /* Node.swift */; };
-		F4A840671E5A705A00484F31 /* StorageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840661E5A705A00484F31 /* StorageNode.swift */; };
 		F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840681E5A894D00484F31 /* Dictionary.swift */; };
 		F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */; };
 		F4C782911E59430000AA8D8E /* Machinery.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7828F1E59430000AA8D8E /* Machinery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		F4A8405D1E5A670E00484F31 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F4A8405F1E5A671A00484F31 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		F4A840661E5A705A00484F31 /* StorageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageNode.swift; sourceTree = "<group>"; };
 		F4A840681E5A894D00484F31 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictonaryConvertible.swift; sourceTree = "<group>"; };
 		F4C7828C1E59430000AA8D8E /* Machinery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Machinery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				F4C782A31E59434700AA8D8E /* Container.swift */,
-				F4A840661E5A705A00484F31 /* StorageNode.swift */,
 				F4A840681E5A894D00484F31 /* Dictionary.swift */,
 				F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */,
 			);
@@ -196,7 +193,6 @@
 				F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */,
 				F4C782B01E59434700AA8D8E /* Transition.swift in Sources */,
 				F4C782AA1E59434700AA8D8E /* Container.swift in Sources */,
-				F4A840671E5A705A00484F31 /* StorageNode.swift in Sources */,
 				F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */,
 				F4A840601E5A671A00484F31 /* Node.swift in Sources */,
 				F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */,

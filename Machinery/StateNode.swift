@@ -17,7 +17,7 @@ final public class StateNode<T: State>: NSObject, Node {
     // MARK: Public Properties
     
     var id: String = UUID().uuidString
-    let state: T
+    var state: T
     var value: T {
         return state
     }
