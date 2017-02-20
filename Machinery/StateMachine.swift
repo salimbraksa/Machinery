@@ -8,17 +8,19 @@
 
 import Foundation
 
-open class StateMachine<T: State> {
+open class StateMachine<T: State>: NSObject {
     
     // MARK: - Properties
     
+    private let graph: Graph<StateNode<T>>
     fileprivate var currentStateNode: StateNode<T>
     fileprivate let notificationCenter = NotificationCenter.default
     
     // MARK: - Initializer
     
     public init(initial: StateNode<T>) {
-        self.currentStateNode = initial
+        graph = Graph(root: initial)
+        currentStateNode = graph.root
     }
     
     // MARK: - Performing Transitions
@@ -35,6 +37,32 @@ open class StateMachine<T: State> {
 
     }
 
+    // MARK: - Persistence
+    
+    open func toDictionary() -> [String: Any] {
+        
+        // Transform graph into dictionary
+        var dictionary = [String: Any]()
+        graph.enumerate { node in
+            dictionary += node.toDictionary()
+        }
+        
+        // Set metadata
+        dictionary["currentNodeId"] = currentStateNode.id
+        return dictionary
+        
+    }
+    
+    // MARK: - NSCoding Protocol Methods
+    
+//    public required init?(coder aDecoder: NSCoder) {
+//        
+//    }
+//    
+//    public func encode(with aCoder: NSCoder) {
+//        
+//    }
+    
 }
 
 // MARK: - Notifications -

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405D1E5A670E00484F31 /* Graph.swift */; };
 		F4A840601E5A671A00484F31 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405F1E5A671A00484F31 /* Node.swift */; };
+		F4A840671E5A705A00484F31 /* StorageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840661E5A705A00484F31 /* StorageNode.swift */; };
+		F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840681E5A894D00484F31 /* Dictionary.swift */; };
+		F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */; };
 		F4C782911E59430000AA8D8E /* Machinery.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7828F1E59430000AA8D8E /* Machinery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4C782AA1E59434700AA8D8E /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A31E59434700AA8D8E /* Container.swift */; };
 		F4C782AB1E59434700AA8D8E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A41E59434700AA8D8E /* State.swift */; };
@@ -22,6 +25,9 @@
 /* Begin PBXFileReference section */
 		F4A8405D1E5A670E00484F31 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F4A8405F1E5A671A00484F31 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		F4A840661E5A705A00484F31 /* StorageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageNode.swift; sourceTree = "<group>"; };
+		F4A840681E5A894D00484F31 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictonaryConvertible.swift; sourceTree = "<group>"; };
 		F4C7828C1E59430000AA8D8E /* Machinery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Machinery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7828F1E59430000AA8D8E /* Machinery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Machinery.h; sourceTree = "<group>"; };
 		F4C782901E59430000AA8D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +60,26 @@
 			name = Graph;
 			sourceTree = "<group>";
 		};
+		F4A840621E5A69E700484F31 /* State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				F4C782A51E59434700AA8D8E /* StateMachine.swift */,
+				F4C782A71E59434700AA8D8E /* StateNode.swift */,
+			);
+			name = "State Machine";
+			sourceTree = "<group>";
+		};
+		F4A840631E5A701200484F31 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4C782A31E59434700AA8D8E /* Container.swift */,
+				F4A840661E5A705A00484F31 /* StorageNode.swift */,
+				F4A840681E5A894D00484F31 /* Dictionary.swift */,
+				F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		F4C782821E5942FF00AA8D8E = {
 			isa = PBXGroup;
 			children = (
@@ -73,12 +99,11 @@
 		F4C7828E1E59430000AA8D8E /* Machinery */ = {
 			isa = PBXGroup;
 			children = (
+				F4A840631E5A701200484F31 /* Helpers */,
+				F4A840621E5A69E700484F31 /* State Machine */,
 				F4A840611E5A697000484F31 /* Graph */,
-				F4C782A31E59434700AA8D8E /* Container.swift */,
-				F4C782A41E59434700AA8D8E /* State.swift */,
-				F4C782A51E59434700AA8D8E /* StateMachine.swift */,
 				F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */,
-				F4C782A71E59434700AA8D8E /* StateNode.swift */,
+				F4C782A41E59434700AA8D8E /* State.swift */,
 				F4C782A81E59434700AA8D8E /* Subscriber.swift */,
 				F4C782A91E59434700AA8D8E /* Transition.swift */,
 				F4C7828F1E59430000AA8D8E /* Machinery.h */,
@@ -171,12 +196,15 @@
 				F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */,
 				F4C782B01E59434700AA8D8E /* Transition.swift in Sources */,
 				F4C782AA1E59434700AA8D8E /* Container.swift in Sources */,
+				F4A840671E5A705A00484F31 /* StorageNode.swift in Sources */,
+				F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */,
 				F4A840601E5A671A00484F31 /* Node.swift in Sources */,
 				F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */,
 				F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */,
 				F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */,
 				F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */,
 				F4C782AB1E59434700AA8D8E /* State.swift in Sources */,
+				F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

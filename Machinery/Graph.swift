@@ -22,8 +22,9 @@ struct Graph<T: Node> where T: Hashable {
     
     // MARK: - Search
     
-    func enumerate(from startNode: T, iterationHandler: (_ node: T) -> ()) {
+    func enumerate(iterationHandler: (_ node: T) -> ()) {
         
+        let startNode = root
         var visited: [T: Bool] = [:]
         var stack = [T]()
         stack.append(startNode)

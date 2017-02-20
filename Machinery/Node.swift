@@ -13,6 +13,7 @@ protocol Node {
     associatedtype ValueType
     
     var value: ValueType { get }
+    
     func destinationNodes() -> [Self]
     func has(node: Self) -> Bool
     

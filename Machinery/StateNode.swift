@@ -16,6 +16,7 @@ final public class StateNode<T: State>: NSObject, Node {
     
     // MARK: Public Properties
     
+    var id: String = UUID().uuidString
     let state: T
     var value: T {
         return state
@@ -59,9 +60,39 @@ final public class StateNode<T: State>: NSObject, Node {
         return transition
     }
 
+    // MARK: - Converting Node
+    
+    func toDictionary() -> Dictionary {
+        
+        // Initialize dictionary
+        var dictionary = Dictionary()
+        
+        // Populate dictionary with transitions
+        var transitions = [Dictionary]()
+        for (key, container) in destinationStateNodes {
+            
+            var transition = Dictionary()
+            transition["transitionId"] = key
+            transition["nodeId"] = container.value.id
+            transitions.append(transition)
+            
+        }
+        dictionary["transitions"] = transitions
+        
+        // Set value as an encoded object
+        dictionary["value"] = NSKeyedArchiver.archivedData(withRootObject: value)
+        
+        // Set node id
+        dictionary[id] = dictionary
+        
+        return dictionary
+        
+    }
+    
     // MARK: - Supporting Types -
 
     typealias DictionaryValue = Container<StateNode>
+    typealias Dictionary = [String: Any]
     
 }
 
