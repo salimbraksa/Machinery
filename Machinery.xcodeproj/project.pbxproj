@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405D1E5A670E00484F31 /* Graph.swift */; };
+		F4A840601E5A671A00484F31 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405F1E5A671A00484F31 /* Node.swift */; };
 		F4C782911E59430000AA8D8E /* Machinery.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7828F1E59430000AA8D8E /* Machinery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4C782AA1E59434700AA8D8E /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A31E59434700AA8D8E /* Container.swift */; };
 		F4C782AB1E59434700AA8D8E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A41E59434700AA8D8E /* State.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4A8405D1E5A670E00484F31 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		F4A8405F1E5A671A00484F31 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		F4C7828C1E59430000AA8D8E /* Machinery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Machinery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7828F1E59430000AA8D8E /* Machinery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Machinery.h; sourceTree = "<group>"; };
 		F4C782901E59430000AA8D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4A840611E5A697000484F31 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				F4A8405D1E5A670E00484F31 /* Graph.swift */,
+				F4A8405F1E5A671A00484F31 /* Node.swift */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
 		F4C782821E5942FF00AA8D8E = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +73,7 @@
 		F4C7828E1E59430000AA8D8E /* Machinery */ = {
 			isa = PBXGroup;
 			children = (
+				F4A840611E5A697000484F31 /* Graph */,
 				F4C782A31E59434700AA8D8E /* Container.swift */,
 				F4C782A41E59434700AA8D8E /* State.swift */,
 				F4C782A51E59434700AA8D8E /* StateMachine.swift */,
@@ -154,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */,
 				F4C782B01E59434700AA8D8E /* Transition.swift in Sources */,
 				F4C782AA1E59434700AA8D8E /* Container.swift in Sources */,
+				F4A840601E5A671A00484F31 /* Node.swift in Sources */,
 				F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */,
 				F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */,
 				F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */,
@@ -326,6 +342,7 @@
 				F4C782961E59430000AA8D8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

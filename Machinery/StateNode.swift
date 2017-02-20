@@ -10,13 +10,16 @@ import Foundation
 
 infix operator =>
 
-open class StateNode<T: State>: NSObject {
+final public class StateNode<T: State>: NSObject, Node {
     
     // MARK: - Properties -
     
     // MARK: Public Properties
     
     let state: T
+    var value: T {
+        return state
+    }
     
     // MARK: Private Properties
     
@@ -28,7 +31,7 @@ open class StateNode<T: State>: NSObject {
         self.state = state
     }
     
-    // MARK: - Managing Destination State Containers -
+    // MARK: - Managing Destination State Nodes -
     
     open func to(_ node: StateNode) -> Transition<T> {
         let transition = Transition<T>(source: self, destination: node)
@@ -39,8 +42,14 @@ open class StateNode<T: State>: NSObject {
         return destinationStateNodes[identifier]?.value
     }
     
-    func has(stateNode: StateNode) -> Bool {
-        return destinationStateNodes.values.contains { $0.value == stateNode }
+    // MARK: - Node Protocol Methods -
+    
+    func has(node: StateNode<T>) -> Bool {
+        return destinationStateNodes.values.contains { $0.value == node }
+    }
+    
+    func destinationNodes() -> [StateNode<T>] {
+        return destinationStateNodes.values.flatMap { $0.value }
     }
     
     // MARK: - Transition Operators -

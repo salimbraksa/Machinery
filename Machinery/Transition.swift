@@ -20,7 +20,7 @@ open class Transition<T: State> {
     
     open func identified(by identifier: String?) {
         let identifier = identifier ?? UUID().uuidString
-        let isWeak = desination.has(stateNode: source)
+        let isWeak = desination.has(node: source)
         source.destinationStateNodes[identifier] = Container(value: desination, isWeak: isWeak)
     }
     
