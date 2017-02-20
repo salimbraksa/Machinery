@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  StateNode.swift
 //  StateMachine
 //
 //  Created by Salim Braksa on 2/18/17.
@@ -8,6 +8,9 @@
 
 import Foundation
 
-public protocol State {
+public protocol StateValue {
     
+}
+
+extension String: StateValue {
 }

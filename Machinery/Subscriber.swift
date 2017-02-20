@@ -10,16 +10,16 @@ import Foundation
 
 public protocol StateMachineSubscriber {
     
-    associatedtype StateType: State
+    associatedtype S: StateValue
     
-    func stateMachine(_ stateMachine: StateMachine<StateType>, willPerformTransitionFrom sourceState: StateType, to destinationState: StateType)
-    func stateMachine(_ stateMachine: StateMachine<StateType>, didPerformTransitionFrom sourceState: StateType, to destinationState: StateType)
+    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>)
+    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>)
     
 }
 
 public extension StateMachineSubscriber {
     
-    func stateMachine(_ stateMachine: StateMachine<StateType>, willPerformTransitionFrom sourceState: StateType, to destinationState: StateType) { }
-    func stateMachine(_ stateMachine: StateMachine<StateType>, didPerformTransitionFrom sourceState: StateType, to destinationState: StateType) { }
+    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }
+    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }
 
 }

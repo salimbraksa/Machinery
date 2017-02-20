@@ -8,9 +8,14 @@
 
 import Foundation
 
-infix operator =>
+precedencegroup TransitionPrecedence {
+    associativity: left
+}
 
-final public class StateNode<T: State>: NSObject, Node {
+infix operator <=>: TransitionPrecedence
+infix operator =>: TransitionPrecedence
+
+final public class StateNode<T: StateValue>: NSObject, Node {
     
     // MARK: - Properties -
     
@@ -18,47 +23,57 @@ final public class StateNode<T: State>: NSObject, Node {
     
     var id: String = UUID().uuidString
     var state: T
-    var value: T {
+    open var value: T {
         return state
     }
     
     // MARK: Private Properties
     
-    var destinationStateNodes = [String: DictionaryValue]()
+    var destinationStates = [String: DictionaryValue]()
     
     // MARK: - Initializer -
     
-    public init(state: T) {
-        self.state = state
+    public init(value: T) {
+        self.state = value
     }
     
-    // MARK: - Managing Destination State Nodes -
+    // MARK: - Managing Destination StateNode Nodes -
     
-    open func to(_ node: StateNode) -> Transition<T> {
+    @discardableResult
+    open func to(_ node: StateNode) -> StateNode {
         let transition = Transition<T>(source: self, destination: node)
-        return transition
+        transition.identified(by: "\(id)-\(node.id)")
+        return node
     }
     
-    func stateNode(withIdentifier identifier: String) -> StateNode? {
-        return destinationStateNodes[identifier]?.value
+    func state(withIdentifier identifier: String) -> StateNode? {
+        return destinationStates[identifier]?.value
     }
     
     // MARK: - Node Protocol Methods -
     
     func has(node: StateNode<T>) -> Bool {
-        return destinationStateNodes.values.contains { $0.value == node }
+        return destinationStates.values.contains { $0.value == node }
     }
     
     func destinationNodes() -> [StateNode<T>] {
-        return destinationStateNodes.values.flatMap { $0.value }
+        return destinationStates.values.flatMap { $0.value }
     }
     
     // MARK: - Transition Operators -
     
-    open static func => (left: StateNode, right: StateNode) -> Transition<T> {
-        let transition = Transition<T>(source: left, destination: right)
-        return transition
+    @discardableResult
+    open static func => (left: StateNode, right: StateNode) -> StateNode {
+        return left.to(right)
     }
+    
+    @discardableResult
+    open static func <=> (left: StateNode, right: StateNode) -> StateNode {
+        left.to(right)
+        right.to(left)
+        return right
+    }
+
 
     // MARK: - Converting Node
     
@@ -69,7 +84,7 @@ final public class StateNode<T: State>: NSObject, Node {
         
         // Populate dictionary with transitions
         var transitions = [Dictionary]()
-        for (key, container) in destinationStateNodes {
+        for (key, container) in destinationStates {
             
             var transition = Dictionary()
             transition["transitionId"] = key
@@ -96,6 +111,6 @@ final public class StateNode<T: State>: NSObject, Node {
     
 }
 
-public func ==<T: State> (left: Transition<T>, right: String?) {
+public func ==<T: StateValue> (left: Transition<T>, right: String?) {
     left.identified(by: right)
 }

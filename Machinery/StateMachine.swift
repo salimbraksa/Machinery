@@ -8,31 +8,39 @@
 
 import Foundation
 
-open class StateMachine<T: State>: NSObject {
+precedencegroup AssignementPrecendence {
+    associativity: left
+}
+infix operator <-: AssignementPrecendence
+
+open class StateMachine<T: StateValue>: NSObject {
     
     // MARK: - Properties
     
     private let graph: Graph<StateNode<T>>
-    fileprivate var currentStateNode: StateNode<T>
+    fileprivate var currentState: StateNode<T>
     fileprivate let notificationCenter = NotificationCenter.default
     
     // MARK: - Initializer
     
     public init(initial: StateNode<T>) {
         graph = Graph(root: initial)
-        currentStateNode = graph.root
+        currentState = graph.root
     }
     
     // MARK: - Performing Transitions
     
-    open func next(identifier: String) {
+    open func next(node: StateNode<T>) {
         
-        guard let destinationStateNode = currentStateNode.stateNode(withIdentifier: identifier)
-        else { return }
-        let userInfo = ["source-state": currentStateNode.state, "dest-state": destinationStateNode.state]
+        guard let destinationState = currentState.state(withIdentifier: "\(currentState.id)-\(node.id)")
+        else {
+            print("Unknown transition from \(currentState) to \(node)")
+            return
+        }
+        let userInfo = ["source-state": currentState, "dest-state": destinationState]
         
         notificationCenter.post(name: NotificationName.willPerformTransition, object: nil, userInfo: userInfo)
-        currentStateNode = destinationStateNode
+        currentState = destinationState
         notificationCenter.post(name: NotificationName.didPerformTransition, object: nil, userInfo: userInfo)
 
     }
@@ -48,7 +56,7 @@ open class StateMachine<T: State>: NSObject {
         }
         
         // Set metadata
-        dictionary["currentNodeId"] = currentStateNode.id
+        dictionary["currentNodeId"] = currentState.id
         return dictionary
         
     }
@@ -63,6 +71,14 @@ open class StateMachine<T: State>: NSObject {
 //        
 //    }
     
+    // MARK: <- Operator
+    
+    @discardableResult
+    open static func <- (left: StateMachine, right: StateNode<T>) -> StateMachine {
+        left.next(node: right)
+        return left
+    }
+    
 }
 
 // MARK: - Notifications -
@@ -71,7 +87,7 @@ public extension StateMachine {
     
     // MARK: - Notifications Subscription
     
-    func subscribe<S: StateMachineSubscriber>(subscriber: S) where S.StateType == T {
+    func subscribe<S: StateMachineSubscriber>(subscriber: S) where S.S == T {
         
         notificationCenter.addObserver(forName: NotificationName.didPerformTransition, object: nil, queue: nil) { notification in
             guard let notification = StateMachineNotification<T>(notification: notification) else { return }
