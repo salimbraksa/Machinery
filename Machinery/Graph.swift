@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Graph<T: Node> where T: Hashable {
+struct Graph<T: NodeType> where T: Hashable {
     
     // MARK: - Properties
     

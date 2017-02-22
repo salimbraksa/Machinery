@@ -10,16 +10,16 @@ import Foundation
 
 open class Transition<T: State> {
     
-    let source: StateNode<T>
-    let destination: StateNode<T>
+    let source: Node<T>
+    let destination: Node<T>
     
-    init(source: StateNode<T>, destination: StateNode<T>) {
+    init(source: Node<T>, destination: Node<T>) {
         self.source = source
         self.destination = destination
     }
     
     @discardableResult
-    open func identified(by identifier: String) -> StateNode<T> {
+    open func identified(by identifier: String) -> Node<T> {
         
         let isWeak = destination.has(node: source)
         source.destinationStates[identifier] = Container(value: destination, isWeak: isWeak)

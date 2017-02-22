@@ -19,16 +19,29 @@ open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Public Properties
     
-    public var restorationIdentifier: String?
+    public var identifier: String?
+    
+    open override var debugDescription: String {
+        var result = ""
+        for (_, node) in nodes {
+            
+            let currentNodeSymbol = node.state.description == currentNode.state.description ? "+ " : ""
+            let initialNodeSymbol = node.state.description == initialNode.state.description ? "- " : ""
+            
+            result += "\(initialNodeSymbol)\(currentNodeSymbol)\(node.state.description) => "
+            result += String(describing: node.destinationNodes().map({ $0.state })) + "\n"
+            
+        }
+        return result
+    }
     
     // MARK: - Private Properties
     
-    private var graph: Graph<StateNode<T>>!
-    fileprivate var initialState: StateNode<T>!
-    fileprivate var currentState: StateNode<T>!
+    fileprivate var initialNode: Node<T>!
+    fileprivate var currentNode: Node<T>!
     fileprivate let notificationCenter = NotificationCenter.default
     
-    private var nodes = [String: StateNode<T>]()
+    private var nodes = [String: Node<T>]()
     
     // MARK: - Initializer
     
@@ -37,13 +50,22 @@ open class StateMachine<T: State>: NSObject, Storable {
         self.initial(state: initial)
     }
     
-    public static func retrieve(restorationIdentifier: String) -> StateMachine<T>? {
-        let _: StateMachine<T>? = Persistence.load(machineWithRestorationIdentifier: restorationIdentifier)
-        return nil
+    private init(nodes: [String: Node<T>]) {
+        self.nodes = nodes
     }
     
-    required public init(dictionary: [String : Any]) {
-        fatalError("Not implemented yet")
+    public convenience init?(identifier: String, block: @escaping (String) -> T) {
+        var dictionary = Persistence.load(machineWithRestorationIdentifier: identifier) ?? [:]
+        dictionary["block"] = block
+        self.init(dictionary: dictionary)
+        self.identifier = identifier
+    }
+    
+    required public convenience init?(dictionary: [String : Any]) {
+        guard let params: StateMachineParams<T> = Persistence.load(machineWithDictionary: dictionary) else { return nil }
+        self.init(nodes: params.nodes)
+        self.initial(state: params.initialNode.state)
+        self.currentNode = params.currentNode
     }
     
     // MARK: - Performing Transitions
@@ -51,12 +73,12 @@ open class StateMachine<T: State>: NSObject, Storable {
     @discardableResult
     open func next(_ state: T) -> StateMachine<T> {
         
-        guard let destinationState = currentState.state(withIdentifier: "to \(state.description)")
-        else { print("Couldn't perform transition from \(currentState.state) to \(state) "); return self }
-        let userInfo = ["source-state": currentState.state, "dest-state": destinationState.state]
+        guard let destinationNode = currentNode.state(withIdentifier: "to \(state.description)")
+        else { print("Couldn't perform transition from \(currentNode.state) to \(state) "); return self }
+        let userInfo = ["source-state": currentNode.state, "dest-state": destinationNode.state]
         
         notificationCenter.post(name: NotificationName.willPerformTransition, object: nil, userInfo: userInfo)
-        currentState = destinationState
+        currentNode = destinationNode
         notificationCenter.post(name: NotificationName.didPerformTransition, object: nil, userInfo: userInfo)
         
         return self
@@ -68,11 +90,9 @@ open class StateMachine<T: State>: NSObject, Storable {
     @discardableResult
     func initial(state: T) -> StateMachine<T> {
         
-        let stateNode = StateNode<T>(state)
-        graph = Graph(root: stateNode)
-        initialState = stateNode
-        currentState = stateNode
-        nodes[state.description] = stateNode
+        let node = self.node(from: state)
+        initialNode = node
+        currentNode = node
         return self
         
     }
@@ -80,24 +100,21 @@ open class StateMachine<T: State>: NSObject, Storable {
     @discardableResult
     open func from(_ sourceState: T, to destinationState: T) -> StateMachine<T> {
         
-        let sourceNodeState = self.nodeState(from: sourceState)
-        let destinationNodeState = self.nodeState(from: destinationState)
-        
-        let transition = Transition(source: sourceNodeState, destination: destinationNodeState)
-        transition.identified(by: "to \(destinationState.description)")
-        
+        let sourceNode = self.node(from: sourceState)
+        let destinationNode = self.node(from: destinationState)
+        sourceNode.to(destinationNode)
         return self
         
     }
     
     @discardableResult
     open func to(_ destinationState: T) -> StateMachine<T> {
-        return from(initialState.state, to: destinationState)
+        return from(initialNode.state, to: destinationState)
     }
     
-    func nodeState(from state: T) -> StateNode<T> {
+    func node(from state: T) -> Node<T> {
         if nodes[state.description] == nil {
-            nodes[state.description] = StateNode(state)
+            nodes[state.description] = Node(state)
         }
         return nodes[state.description]!
     }
@@ -108,10 +125,13 @@ open class StateMachine<T: State>: NSObject, Storable {
         
         // Transform the entire graph into dictionary
         var dictionary = Dictionary()
-        graph.enumerate { node in
+        for (_, node) in nodes { 
             dictionary += node.dictionaryRepresention()
         }
-        return [Persistence.Keys.currentNodeId: currentState.id, Persistence.Keys.graph: dictionary]
+        
+        return [Persistence.Keys.currentNodeId: currentNode.id,
+                Persistence.Keys.initialNodeId: initialNode.id,
+                Persistence.Keys.graph: dictionary]
         
     }
     

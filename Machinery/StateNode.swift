@@ -1,5 +1,5 @@
 //
-//  StateNode.swift
+//  Node.swift
 //  StateMachine
 //
 //  Created by Salim Braksa on 2/18/17.
@@ -16,7 +16,7 @@ precedencegroup TransitionPrecedence {
 infix operator <=>: TransitionPrecedence
 infix operator =>: TransitionPrecedence
 
-final public class StateNode<T: State>: NSObject, Node {
+final public class Node<T: State>: NSObject, NodeType {
     
     // MARK: - Properties -
     
@@ -39,35 +39,27 @@ final public class StateNode<T: State>: NSObject, Node {
         self.state = value
     }
     
-    // MARK: - Managing Destination StateNode Nodes -
+    // MARK: - Managing Destination Node Nodes -
     
-    open func to(_ state: T) -> StateNode<T> {
-        machine.from(state, to: state)
-        return machine.nodeState(from: state)
+    open func to(_ node: Node<T>) {
+        let transition = Transition(source: self, destination: node)
+        transition.identified(by: "to \(node.state.description)")
     }
     
-    func state(withIdentifier identifier: String) -> StateNode? {
+    func state(withIdentifier identifier: String) -> Node? {
         return destinationStates[identifier]?.value
     }
     
     // MARK: - Node Protocol Methods -
     
-    func has(node: StateNode<T>) -> Bool {
+    func has(node: Node<T>) -> Bool {
         return destinationStates.values.contains { $0.value == node }
     }
     
-    func destinationNodes() -> [StateNode<T>] {
+    func destinationNodes() -> [Node<T>] {
         return destinationStates.values.flatMap { $0.value }
     }
     
-    // MARK: - Transition Operators -
-    
-    @discardableResult
-//    open static func => (left: StateNode, right: StateNode) -> StateNode<T> {
-//        left.to(right).identified(by: nil)
-//        return right
-//    }
-
     // MARK: - Converting Node
     
     func dictionaryRepresention() -> Dictionary {
@@ -88,8 +80,7 @@ final public class StateNode<T: State>: NSObject, Node {
         dictionary["transitions"] = transitions
         
         // Set value as an encoded object
-        if !(value is Storable) { fatalError() }
-        dictionary["value"] = (value as! Storable).dictionaryRepresention()
+        dictionary["value"] = state.description
     
         return [id: dictionary]
         
@@ -97,7 +88,7 @@ final public class StateNode<T: State>: NSObject, Node {
     
     // MARK: - Supporting Types -
 
-    typealias DictionaryValue = Container<StateNode>
+    typealias DictionaryValue = Container<Node>
     
 }
 

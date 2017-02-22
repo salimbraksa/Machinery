@@ -16,7 +16,7 @@ public protocol Storable {
     
 }
 
-public extension Storable where Self: RawRepresentable {
+public extension Storable where Self: RawRepresentable, Self.RawValue: LosslessStringConvertible {
     
     init?(dictionary: [String : Any]) {
         guard let rawValue = dictionary["rawValue"] as? RawValue else { return nil }
@@ -24,7 +24,7 @@ public extension Storable where Self: RawRepresentable {
     }
     
     func dictionaryRepresention() -> [String : Any] {
-        return ["rawValue": rawValue]
+        return ["rawValue": rawValue.description]
     }
     
 }

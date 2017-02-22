@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Node {
+protocol NodeType {
     
     associatedtype ValueType
     
