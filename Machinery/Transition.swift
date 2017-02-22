@@ -11,17 +11,20 @@ import Foundation
 open class Transition<T: StateValue> {
     
     let source: StateNode<T>
-    let desination: StateNode<T>
+    let destination: StateNode<T>
     
     init(source: StateNode<T>, destination: StateNode<T>) {
         self.source = source
-        self.desination = destination
+        self.destination = destination
     }
     
-    open func identified(by identifier: String?) {
-        let identifier = identifier ?? UUID().uuidString
-        let isWeak = desination.has(node: source)
-        source.destinationStates[identifier] = Container(value: desination, isWeak: isWeak)
+    @discardableResult
+    open func identified(by identifier: String) -> StateNode<T> {
+        
+        let isWeak = destination.has(node: source)
+        source.destinationStates[identifier] = Container(value: destination, isWeak: isWeak)
+        return destination
+        
     }
     
 }

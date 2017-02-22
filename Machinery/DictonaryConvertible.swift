@@ -8,8 +8,23 @@
 
 import UIKit
 
-protocol DictionaryConvertible: ExpressibleByDictionaryLiteral {
+public protocol Storable {
     
-    func toDictionary() -> [String: Any]
+    init?(dictionary: [String: Any])
+    
+    func dictionaryRepresention() -> [String: Any]
+    
+}
+
+public extension Storable where Self: RawRepresentable {
+    
+    init?(dictionary: [String : Any]) {
+        guard let rawValue = dictionary["rawValue"] as? RawValue else { return nil }
+        self.init(rawValue: rawValue)
+    }
+    
+    func dictionaryRepresention() -> [String : Any] {
+        return ["rawValue": rawValue]
+    }
     
 }

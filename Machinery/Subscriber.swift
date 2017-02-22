@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol StateMachineSubscriber {
+public protocol Subscriber {
     
     associatedtype S: StateValue
     
@@ -17,7 +17,7 @@ public protocol StateMachineSubscriber {
     
 }
 
-public extension StateMachineSubscriber {
+public extension Subscriber {
     
     func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }
     func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }

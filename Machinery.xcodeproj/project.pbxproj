@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F456B7C61E5C6B29009A4ACA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456B7C51E5C6B29009A4ACA /* Persistence.swift */; };
 		F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405D1E5A670E00484F31 /* Graph.swift */; };
 		F4A840601E5A671A00484F31 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405F1E5A671A00484F31 /* Node.swift */; };
 		F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840681E5A894D00484F31 /* Dictionary.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F456B7C51E5C6B29009A4ACA /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F4A8405D1E5A670E00484F31 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		F4A8405F1E5A671A00484F31 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		F4A840681E5A894D00484F31 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				F4C782A91E59434700AA8D8E /* Transition.swift */,
 				F4C7828F1E59430000AA8D8E /* Machinery.h */,
 				F4C782901E59430000AA8D8E /* Info.plist */,
+				F456B7C51E5C6B29009A4ACA /* Persistence.swift */,
 			);
 			path = Machinery;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */,
 				F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */,
 				F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */,
+				F456B7C61E5C6B29009A4ACA /* Persistence.swift in Sources */,
 				F4C782AB1E59434700AA8D8E /* State.swift in Sources */,
 				F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */,
 			);

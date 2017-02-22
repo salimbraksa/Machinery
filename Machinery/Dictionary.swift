@@ -14,8 +14,8 @@ func += <K, V> ( left: inout [K:V], right: [K:V]) {
     }
 }
 
-func + <K,V>(left: Dictionary<K,V>, right: Dictionary<K,V>) -> Dictionary<K,V> {
-    var map = Dictionary<K,V>()
+func + <K,V>(left: [K:V], right: [K:V]) -> [K:V] {
+    var map = [K:V]()
     for (k, v) in left {
         map[k] = v
     }

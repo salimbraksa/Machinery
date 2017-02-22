@@ -9,6 +9,7 @@
 import Foundation
 
 precedencegroup TransitionPrecedence {
+    higherThan: AdditionPrecedence
     associativity: left
 }
 
@@ -29,21 +30,20 @@ final public class StateNode<T: StateValue>: NSObject, Node {
     
     // MARK: Private Properties
     
+    weak var machine: StateMachine<T>!
     var destinationStates = [String: DictionaryValue]()
     
     // MARK: - Initializer -
     
-    public init(value: T) {
+    public init(_ value: T) {
         self.state = value
     }
     
     // MARK: - Managing Destination StateNode Nodes -
     
-    @discardableResult
-    open func to(_ node: StateNode) -> StateNode {
-        let transition = Transition<T>(source: self, destination: node)
-        transition.identified(by: "\(id)-\(node.id)")
-        return node
+    open func to(_ state: T) -> StateNode<T> {
+        machine.from(state, to: state)
+        return machine.nodeState(from: state)
     }
     
     func state(withIdentifier identifier: String) -> StateNode? {
@@ -63,21 +63,14 @@ final public class StateNode<T: StateValue>: NSObject, Node {
     // MARK: - Transition Operators -
     
     @discardableResult
-    open static func => (left: StateNode, right: StateNode) -> StateNode {
-        return left.to(right)
-    }
-    
-    @discardableResult
-    open static func <=> (left: StateNode, right: StateNode) -> StateNode {
-        left.to(right)
-        right.to(left)
-        return right
-    }
-
+//    open static func => (left: StateNode, right: StateNode) -> StateNode<T> {
+//        left.to(right).identified(by: nil)
+//        return right
+//    }
 
     // MARK: - Converting Node
     
-    func toDictionary() -> Dictionary {
+    func dictionaryRepresention() -> Dictionary {
         
         // Initialize dictionary
         var dictionary = Dictionary()
@@ -95,22 +88,19 @@ final public class StateNode<T: StateValue>: NSObject, Node {
         dictionary["transitions"] = transitions
         
         // Set value as an encoded object
-        dictionary["value"] = NSKeyedArchiver.archivedData(withRootObject: value)
-        
-        // Set node id
-        dictionary[id] = dictionary
-        
-        return dictionary
+        if !(value is Storable) { fatalError() }
+        dictionary["value"] = (value as! Storable).dictionaryRepresention()
+    
+        return [id: dictionary]
         
     }
     
     // MARK: - Supporting Types -
 
     typealias DictionaryValue = Container<StateNode>
-    typealias Dictionary = [String: Any]
     
 }
 
-public func ==<T: StateValue> (left: Transition<T>, right: String?) {
+public func ==<T: StateValue> (left: Transition<T>, right: String) {
     left.identified(by: right)
 }
