@@ -8,9 +8,9 @@
 
 import Foundation
 
-public typealias StateValue = LosslessStringConvertible
+public typealias State = LosslessStringConvertible
 
-public extension StateValue where Self: RawRepresentable, Self.RawValue: LosslessStringConvertible {
+public extension State where Self: RawRepresentable, Self.RawValue: LosslessStringConvertible {
 
     public var description: String {
         return self.rawValue.description

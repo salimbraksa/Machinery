@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct StateMachineNotification<T: StateValue> {
+struct StateMachineNotification<T: State> {
     
-    let sourceState: StateNode<T>
-    let destinationState: StateNode<T>
+    let sourceState: T
+    let destinationState: T
     
     init?(notification: Notification) {
         
         guard
-            let sourceState = notification.userInfo?["source-state"] as? StateNode<T>,
-            let destinationState = notification.userInfo?["dest-state"] as? StateNode<T>
+            let sourceState = notification.userInfo?["source-state"] as? T,
+            let destinationState = notification.userInfo?["dest-state"] as? T
             else { return nil }
         
         self.sourceState = sourceState

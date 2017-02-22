@@ -15,7 +15,7 @@ infix operator <-: AssignementPrecendence
 typealias Dictionary = [String: Any]
 
 
-open class StateMachine<T: StateValue>: NSObject, Storable {
+open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Public Properties
     
@@ -53,7 +53,7 @@ open class StateMachine<T: StateValue>: NSObject, Storable {
         
         guard let destinationState = currentState.state(withIdentifier: "to \(state.description)")
         else { print("Couldn't perform transition from \(currentState.state) to \(state) "); return self }
-        let userInfo = ["source-state": currentState, "dest-state": destinationState]
+        let userInfo = ["source-state": currentState.state, "dest-state": destinationState.state]
         
         notificationCenter.post(name: NotificationName.willPerformTransition, object: nil, userInfo: userInfo)
         currentState = destinationState
@@ -102,7 +102,7 @@ open class StateMachine<T: StateValue>: NSObject, Storable {
         return nodes[state.description]!
     }
 
-    // MARK: - Persistence
+    // MARK: - Machine persistence
     
     open func dictionaryRepresention() -> [String: Any] {
         
@@ -134,7 +134,7 @@ open class StateMachine<T: StateValue>: NSObject, Storable {
     
 }
 
-public func => <T: StateValue>(left: T, right: T) -> (source: T, destination: T) {
+public func => <T: State>(left: T, right: T) -> (source: T, destination: T) {
     return (left, right)
 }
 
@@ -144,7 +144,7 @@ public extension StateMachine {
     
     // MARK: - Notifications Subscription
     
-    func subscribe<S: Subscriber>(subscriber: S) where S.S == T {
+    func subscribe<S: Subscriber>(_ subscriber: S) where S.S == T {
         
         notificationCenter.addObserver(forName: NotificationName.didPerformTransition, object: nil, queue: nil) { notification in
             guard let notification = StateMachineNotification<T>(notification: notification) else { return }

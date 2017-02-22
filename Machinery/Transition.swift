@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class Transition<T: StateValue> {
+open class Transition<T: State> {
     
     let source: StateNode<T>
     let destination: StateNode<T>

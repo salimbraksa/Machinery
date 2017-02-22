@@ -16,7 +16,7 @@ precedencegroup TransitionPrecedence {
 infix operator <=>: TransitionPrecedence
 infix operator =>: TransitionPrecedence
 
-final public class StateNode<T: StateValue>: NSObject, Node {
+final public class StateNode<T: State>: NSObject, Node {
     
     // MARK: - Properties -
     
@@ -101,6 +101,6 @@ final public class StateNode<T: StateValue>: NSObject, Node {
     
 }
 
-public func ==<T: StateValue> (left: Transition<T>, right: String) {
+public func ==<T: State> (left: Transition<T>, right: String) {
     left.identified(by: right)
 }

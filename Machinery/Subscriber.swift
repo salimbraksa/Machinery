@@ -10,16 +10,16 @@ import Foundation
 
 public protocol Subscriber {
     
-    associatedtype S: StateValue
+    associatedtype S: State
     
-    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>)
-    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>)
+    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom source: S, to destination: S)
+    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom source: S, to destination: S)
     
 }
 
 public extension Subscriber {
     
-    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }
-    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom sourceState: StateNode<S>, to destinationState: StateNode<S>) { }
+    func stateMachine(_ stateMachine: StateMachine<S>, willPerformTransitionFrom source: S, to destination: S) { }
+    func stateMachine(_ stateMachine: StateMachine<S>, didPerformTransitionFrom source: S, to destination: S) { }
 
 }

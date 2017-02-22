@@ -19,7 +19,7 @@ struct Persistence {
     
     // MARK: - API -
     
-    static func save<T: StateValue>(machine: StateMachine<T>, queue: DispatchQueue? = nil) {
+    static func save<T: State>(machine: StateMachine<T>, queue: DispatchQueue? = nil) {
         
         let queue = queue ?? Persistence.queue
         queue.async {
@@ -28,7 +28,7 @@ struct Persistence {
         
     }
     
-    static func load<T: StateValue>(machineWithRestorationIdentifier restorationIdentifier: String) -> StateMachine<T>? {
+    static func load<T: State>(machineWithRestorationIdentifier restorationIdentifier: String) -> StateMachine<T>? {
         
         // Load graph from UserDefaults
         guard let graphData = UserDefaults.standard.data(forKey: Keys.userDefaultsGraphKey(restorationIdentifier)) else { return nil }
@@ -43,7 +43,7 @@ struct Persistence {
     
     // MARK: - Helpers
     
-    static private func save<T: StateValue>(machine: StateMachine<T>) {
+    static private func save<T: State>(machine: StateMachine<T>) {
         
         // Get the data that should be persisted
         guard let restorationIdentifier = machine.restorationIdentifier else { return }
