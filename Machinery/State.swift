@@ -22,3 +22,7 @@ public extension State where Self: RawRepresentable, Self.RawValue: LosslessStri
     }
     
 }
+
+public func => <T: State>(left: T, right: T) -> (source: T, destination: T) {
+    return (left, right)
+}

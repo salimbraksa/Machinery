@@ -20,6 +20,7 @@ open class StateMachine<T: State>: NSObject, Storable {
     // MARK: - Public Properties
     
     public var identifier: String?
+    public var saveCondition = { (state: T) -> Bool in return false }
     
     open override var debugDescription: String {
         var result = ""
@@ -37,8 +38,13 @@ open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Private Properties
     
+    private let persistence = Persistence()
     fileprivate var initialNode: Node<T>!
-    fileprivate var currentNode: Node<T>!
+    fileprivate var currentNode: Node<T>!{
+        didSet {
+            self.save()
+        }
+    }
     fileprivate let notificationCenter = NotificationCenter.default
     
     private var nodes = [String: Node<T>]()
@@ -136,11 +142,13 @@ open class StateMachine<T: State>: NSObject, Storable {
     }
     
     /// Manually saves the machine's current configuration
-    open func save() {
-        Persistence.save(machine: self)
+    private func save() {
+        if saveCondition(currentNode.state) {
+            persistence.save(machine: self)
+        }
     }
 
-    // MARK: <- Operator
+    // MARK: Operator
     
     @discardableResult
     open static func + (left: StateMachine, right: (source: T, destination: T)) -> StateMachine {
@@ -152,10 +160,6 @@ open class StateMachine<T: State>: NSObject, Storable {
         return left.next(right)
     }
     
-}
-
-public func => <T: State>(left: T, right: T) -> (source: T, destination: T) {
-    return (left, right)
 }
 
 // MARK: - Notifications -

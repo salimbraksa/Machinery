@@ -18,20 +18,19 @@ struct StateMachineParams<T: State> {
 
 struct Persistence {
     
-    private static let domain = "SMPersistence"
-    private static let queue = DispatchQueue(label: "\(domain).dispatchQueue")
+    static private let domain = "SMPersistence"
+    private let queue = DispatchQueue(label: "\(domain).dispatchQueue.\(UUID())")
     
-    private init() {
+    init() {
         
     }
     
     // MARK: - API -
     
-    static func save<T: State>(machine: StateMachine<T>, queue: DispatchQueue? = nil) {
+    func save<T: State>(machine: StateMachine<T>) {
         
-        let queue = queue ?? Persistence.queue
         queue.async {
-            Persistence.save(machine: machine)
+            self._save(machine: machine)
         }
         
     }
@@ -50,7 +49,7 @@ struct Persistence {
         let initialNodeId = UserDefaults.standard.string(forKey: Keys.userDefaultsInitialNodeKey(identifier))
         else { return nil }
         
-        return [Keys.currentNodeId: currentNodeId,
+        return [Persistence.Keys.currentNodeId: currentNodeId,
                 Keys.graph: graph,
                 Keys.initialNodeId: initialNodeId]
         
@@ -112,7 +111,7 @@ struct Persistence {
     
     // MARK: - Helpers
     
-    static private func save<T: State>(machine: StateMachine<T>) {
+    private func _save<T: State>(machine: StateMachine<T>) {
         
         // Get the data that should be persisted
         guard let identifier = machine.identifier else {
