@@ -14,13 +14,20 @@ precedencegroup AssignementPrecendence {
 infix operator <-: AssignementPrecendence
 typealias Dictionary = [String: Any]
 
-
 open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Public Properties
     
+    public var autosave = false {
+        didSet {
+            if !repository.isExist(machine: self) {
+                save()
+            }
+        }
+    }
+    
     public var identifier: String?
-    public var saveCondition = { (state: T) -> Bool in return false }
+    public var saveWhen = { (state: T) -> Bool in return true }
     
     open override var debugDescription: String {
         var result = ""
@@ -38,11 +45,13 @@ open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Private Properties
     
-    private let persistence = Persistence()
+    private let repository = Repository()
     fileprivate var initialNode: Node<T>!
     fileprivate var currentNode: Node<T>!{
         didSet {
-            self.save()
+            if autosave && saveWhen(currentNode.state) {
+                self.save()
+            }
         }
     }
     fileprivate let notificationCenter = NotificationCenter.default
@@ -61,14 +70,14 @@ open class StateMachine<T: State>: NSObject, Storable {
     }
     
     public convenience init?(identifier: String, block: @escaping (String) -> T) {
-        var dictionary = Persistence.load(machineWithRestorationIdentifier: identifier) ?? [:]
+        var dictionary = Repository.load(machineWithRestorationIdentifier: identifier) ?? [:]
         dictionary["block"] = block
         self.init(dictionary: dictionary)
         self.identifier = identifier
     }
     
     required public convenience init?(dictionary: [String : Any]) {
-        guard let params: StateMachineParams<T> = Persistence.load(machineWithDictionary: dictionary) else { return nil }
+        guard let params: StateMachineParams<T> = Repository.load(machineWithDictionary: dictionary) else { return nil }
         self.init(nodes: params.nodes)
         self.initial(state: params.initialNode.state)
         self.currentNode = params.currentNode
@@ -125,7 +134,7 @@ open class StateMachine<T: State>: NSObject, Storable {
         return nodes[state.description]!
     }
 
-    // MARK: - Machine persistence
+    // MARK: - Machine repository
     
     open func dictionaryRepresention() -> [String: Any] {
         
@@ -135,17 +144,15 @@ open class StateMachine<T: State>: NSObject, Storable {
             dictionary += node.dictionaryRepresention()
         }
         
-        return [Persistence.Keys.currentNodeId: currentNode.id,
-                Persistence.Keys.initialNodeId: initialNode.id,
-                Persistence.Keys.graph: dictionary]
+        return [Constants.currentNodeId: currentNode.id,
+                Constants.initialNodeId: initialNode.id,
+                Constants.graph: dictionary]
         
     }
     
     /// Manually saves the machine's current configuration
     private func save() {
-        if saveCondition(currentNode.state) {
-            persistence.save(machine: self)
-        }
+        repository.save(machine: self)
     }
 
     // MARK: Operator

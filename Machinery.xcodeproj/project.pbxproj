@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F456B7C61E5C6B29009A4ACA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456B7C51E5C6B29009A4ACA /* Persistence.swift */; };
-		F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405D1E5A670E00484F31 /* Graph.swift */; };
-		F4A840601E5A671A00484F31 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8405F1E5A671A00484F31 /* Node.swift */; };
-		F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840681E5A894D00484F31 /* Dictionary.swift */; };
-		F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */; };
+		F456B7C61E5C6B29009A4ACA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456B7C51E5C6B29009A4ACA /* Repository.swift */; };
+		F472DA301E5E92CE00567B39 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472DA2F1E5E92CE00567B39 /* Save.swift */; };
+		F472DA321E5E92E000567B39 /* Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472DA311E5E92E000567B39 /* Load.swift */; };
+		F472DA341E5E930B00567B39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472DA331E5E930B00567B39 /* Constants.swift */; };
+		F4A840691E5A894D00484F31 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A840681E5A894D00484F31 /* Dictionary+Additions.swift */; };
+		F4A8406B1E5A919300484F31 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8406A1E5A919300484F31 /* Storable.swift */; };
 		F4C782911E59430000AA8D8E /* Machinery.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C7828F1E59430000AA8D8E /* Machinery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4C782AA1E59434700AA8D8E /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A31E59434700AA8D8E /* Container.swift */; };
 		F4C782AB1E59434700AA8D8E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A41E59434700AA8D8E /* State.swift */; };
 		F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A51E59434700AA8D8E /* StateMachine.swift */; };
 		F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */; };
-		F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A71E59434700AA8D8E /* StateNode.swift */; };
+		F4C782AE1E59434700AA8D8E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A71E59434700AA8D8E /* Node.swift */; };
 		F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A81E59434700AA8D8E /* Subscriber.swift */; };
 		F4C782B01E59434700AA8D8E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C782A91E59434700AA8D8E /* Transition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F456B7C51E5C6B29009A4ACA /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		F4A8405D1E5A670E00484F31 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
-		F4A8405F1E5A671A00484F31 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		F4A840681E5A894D00484F31 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictonaryConvertible.swift; sourceTree = "<group>"; };
+		F456B7C51E5C6B29009A4ACA /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		F472DA2F1E5E92CE00567B39 /* Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
+		F472DA311E5E92E000567B39 /* Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Load.swift; sourceTree = "<group>"; };
+		F472DA331E5E930B00567B39 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F4A840681E5A894D00484F31 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
+		F4A8406A1E5A919300484F31 /* Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		F4C7828C1E59430000AA8D8E /* Machinery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Machinery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7828F1E59430000AA8D8E /* Machinery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Machinery.h; sourceTree = "<group>"; };
 		F4C782901E59430000AA8D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,7 +37,7 @@
 		F4C782A41E59434700AA8D8E /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		F4C782A51E59434700AA8D8E /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineNotification.swift; sourceTree = "<group>"; };
-		F4C782A71E59434700AA8D8E /* StateNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateNode.swift; sourceTree = "<group>"; };
+		F4C782A71E59434700AA8D8E /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		F4C782A81E59434700AA8D8E /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		F4C782A91E59434700AA8D8E /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,20 +53,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F4A840611E5A697000484F31 /* Graph */ = {
+		F472DA2E1E5E928C00567B39 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F4A8405D1E5A670E00484F31 /* Graph.swift */,
-				F4A8405F1E5A671A00484F31 /* Node.swift */,
+				F456B7C51E5C6B29009A4ACA /* Repository.swift */,
+				F472DA2F1E5E92CE00567B39 /* Save.swift */,
+				F472DA311E5E92E000567B39 /* Load.swift */,
+				F472DA331E5E930B00567B39 /* Constants.swift */,
 			);
-			name = Graph;
+			name = Repository;
 			sourceTree = "<group>";
 		};
 		F4A840621E5A69E700484F31 /* State Machine */ = {
 			isa = PBXGroup;
 			children = (
+				F4C782A91E59434700AA8D8E /* Transition.swift */,
+				F4C782A81E59434700AA8D8E /* Subscriber.swift */,
+				F4C782A41E59434700AA8D8E /* State.swift */,
 				F4C782A51E59434700AA8D8E /* StateMachine.swift */,
-				F4C782A71E59434700AA8D8E /* StateNode.swift */,
+				F4C782A71E59434700AA8D8E /* Node.swift */,
 			);
 			name = "State Machine";
 			sourceTree = "<group>";
@@ -72,9 +79,10 @@
 		F4A840631E5A701200484F31 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */,
 				F4C782A31E59434700AA8D8E /* Container.swift */,
-				F4A840681E5A894D00484F31 /* Dictionary.swift */,
-				F4A8406A1E5A919300484F31 /* DictonaryConvertible.swift */,
+				F4A840681E5A894D00484F31 /* Dictionary+Additions.swift */,
+				F4A8406A1E5A919300484F31 /* Storable.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -98,16 +106,11 @@
 		F4C7828E1E59430000AA8D8E /* Machinery */ = {
 			isa = PBXGroup;
 			children = (
+				F472DA2E1E5E928C00567B39 /* Repository */,
 				F4A840631E5A701200484F31 /* Helpers */,
 				F4A840621E5A69E700484F31 /* State Machine */,
-				F4A840611E5A697000484F31 /* Graph */,
-				F4C782A61E59434700AA8D8E /* StateMachineNotification.swift */,
-				F4C782A41E59434700AA8D8E /* State.swift */,
-				F4C782A81E59434700AA8D8E /* Subscriber.swift */,
-				F4C782A91E59434700AA8D8E /* Transition.swift */,
 				F4C7828F1E59430000AA8D8E /* Machinery.h */,
 				F4C782901E59430000AA8D8E /* Info.plist */,
-				F456B7C51E5C6B29009A4ACA /* Persistence.swift */,
 			);
 			path = Machinery;
 			sourceTree = "<group>";
@@ -193,18 +196,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4A8405E1E5A670E00484F31 /* Graph.swift in Sources */,
 				F4C782B01E59434700AA8D8E /* Transition.swift in Sources */,
+				F472DA321E5E92E000567B39 /* Load.swift in Sources */,
 				F4C782AA1E59434700AA8D8E /* Container.swift in Sources */,
-				F4A840691E5A894D00484F31 /* Dictionary.swift in Sources */,
-				F4A840601E5A671A00484F31 /* Node.swift in Sources */,
+				F4A840691E5A894D00484F31 /* Dictionary+Additions.swift in Sources */,
 				F4C782AC1E59434700AA8D8E /* StateMachine.swift in Sources */,
-				F4C782AE1E59434700AA8D8E /* StateNode.swift in Sources */,
+				F4C782AE1E59434700AA8D8E /* Node.swift in Sources */,
+				F472DA301E5E92CE00567B39 /* Save.swift in Sources */,
+				F472DA341E5E930B00567B39 /* Constants.swift in Sources */,
 				F4C782AF1E59434700AA8D8E /* Subscriber.swift in Sources */,
 				F4C782AD1E59434700AA8D8E /* StateMachineNotification.swift in Sources */,
-				F456B7C61E5C6B29009A4ACA /* Persistence.swift in Sources */,
+				F456B7C61E5C6B29009A4ACA /* Repository.swift in Sources */,
 				F4C782AB1E59434700AA8D8E /* State.swift in Sources */,
-				F4A8406B1E5A919300484F31 /* DictonaryConvertible.swift in Sources */,
+				F4A8406B1E5A919300484F31 /* Storable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
