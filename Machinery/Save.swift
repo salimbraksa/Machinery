@@ -37,7 +37,8 @@ struct Save {
             try graphData.write(to: Constants.graphFileUrl(identifier))
             
             // Write graph metadata at /Library/Application Support/Machinery/<identifier>/metadata
-            let metadataDictionary = [Constants.currentNodeId: currentNodeId, Constants.initialNodeId: initialNodeId]
+            var metadataDictionary = [Constants.currentNodeId: currentNodeId, Constants.initialNodeId: initialNodeId]
+            metadataDictionary["autosave"] = machine.autosave
             let metadata = NSKeyedArchiver.archivedData(withRootObject: metadataDictionary)
             try metadata.write(to: Constants.metadataFileUrl(identifier))
             

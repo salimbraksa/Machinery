@@ -8,15 +8,15 @@
 
 import Foundation
 
-precedencegroup AssignementPrecendence {
-    associativity: left
-}
-infix operator <-: AssignementPrecendence
 typealias Dictionary = [String: Any]
 
 open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Public Properties
+    
+    public var currentState: T { return currentNode.state }
+    public var identifier: String?
+    public var saveWhen = { (state: T) -> Bool in return true }
     
     public var autosave = false {
         didSet {
@@ -25,9 +25,6 @@ open class StateMachine<T: State>: NSObject, Storable {
             }
         }
     }
-    
-    public var identifier: String?
-    public var saveWhen = { (state: T) -> Bool in return true }
     
     open override var debugDescription: String {
         var result = ""
@@ -45,42 +42,69 @@ open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Private Properties
     
-    private let repository = Repository()
+    fileprivate let repository = Repository()
     fileprivate var initialNode: Node<T>!
-    fileprivate var currentNode: Node<T>!{
+    fileprivate let notificationCenter = NotificationCenter.default
+    fileprivate var nodes = [String: Node<T>]()
+    
+    fileprivate var currentNode: Node<T>! {
         didSet {
             if autosave && saveWhen(currentNode.state) {
                 self.save()
             }
         }
     }
-    fileprivate let notificationCenter = NotificationCenter.default
-    
-    private var nodes = [String: Node<T>]()
     
     // MARK: - Initializer
     
+    private override init() {
+        super.init()
+    }
+    
     public init(initial: T) {
         super.init()
-        self.initial(state: initial)
+        self.initial(initial)
     }
     
     private init(nodes: [String: Node<T>]) {
         self.nodes = nodes
     }
     
-    public convenience init?(identifier: String, block: @escaping (String) -> T) {
+    public convenience init?(identifier: String, state: ( (String) -> T)? = nil) {
         var dictionary = Repository.load(machineWithRestorationIdentifier: identifier) ?? [:]
-        dictionary["block"] = block
+        dictionary["state"] = state
         self.init(dictionary: dictionary)
         self.identifier = identifier
+        
+    }
+    
+    public convenience init(restorationIdentifier identifier: String, state: ( (String) -> T)? = nil, orNew new: @escaping (StateMachine<T>) -> ()) {
+        
+        var dictionary = Repository.load(machineWithRestorationIdentifier: identifier) ?? [:]
+        dictionary["state"] = state
+        dictionary["creation"] = new
+        self.init(dictionary: dictionary)!
+        self.identifier = identifier
+        
     }
     
     required public convenience init?(dictionary: [String : Any]) {
-        guard let params: StateMachineParams<T> = Repository.load(machineWithDictionary: dictionary) else { return nil }
+        
+        guard let params: StateMachineParams<T> = Repository.load(machineWithDictionary: dictionary) else {
+            
+            if let creation = dictionary["creation"] as? (StateMachine<T>) -> () {
+                self.init()
+                creation(self)
+            }
+            return nil
+            
+        }
+        
         self.init(nodes: params.nodes)
-        self.initial(state: params.initialNode.state)
+        self.initial(params.initialNode.state)
         self.currentNode = params.currentNode
+        self.autosave = params.autosave
+        
     }
     
     // MARK: - Performing Transitions
@@ -103,7 +127,7 @@ open class StateMachine<T: State>: NSObject, Storable {
     // MARK: - Machine construction
     
     @discardableResult
-    func initial(state: T) -> StateMachine<T> {
+    public func initial(_ state: T) -> StateMachine<T> {
         
         let node = self.node(from: state)
         initialNode = node
@@ -163,7 +187,7 @@ open class StateMachine<T: State>: NSObject, Storable {
     }
     
     @discardableResult
-    open static func <- (left: StateMachine, right: T) -> StateMachine {
+    open static func => (left: StateMachine, right: T) -> StateMachine {
         return left.next(right)
     }
     
@@ -187,6 +211,12 @@ public extension StateMachine {
             subscriber.stateMachine(self, willPerformTransitionFrom: notification.sourceState, to: notification.destinationState)
         }
         
+        notificationCenter.addObserver(forName: NotificationName.stateMachineStarted, object: nil, queue: nil) { _ in
+            subscriber.stateMachine(self, startedAtState: self.currentNode.state)
+        }
+        
+        self.notificationCenter.post(name: NotificationName.stateMachineStarted, object: nil)
+        
     }
     
 }
@@ -197,5 +227,6 @@ fileprivate struct NotificationName {
     
     static let didPerformTransition = Notification.Name("didPerformTransition")
     static let willPerformTransition = Notification.Name("willPerformTransition")
+    static let stateMachineStarted = Notification.Name("stateMachineStarted")
     
 }

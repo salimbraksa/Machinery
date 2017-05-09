@@ -13,6 +13,7 @@ struct StateMachineParams<T: State> {
     var currentNode: Node<T>!
     var initialNode: Node<T>!
     var nodes: [String: Node<T>]!
+    var autosave = false
     
 }
 

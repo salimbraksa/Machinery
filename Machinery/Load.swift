@@ -26,29 +26,27 @@ struct Load {
         let metadataFileUrl = Constants.metadataFileUrl(identifier)
         guard
             let metadata = try? Data(contentsOf: Constants.metadataFileUrl(identifier)),
-            let metadataDictionary = NSKeyedUnarchiver.unarchiveObject(with: metadata) as? Dictionary,
-            let currentNodeId = metadataDictionary[Constants.currentNodeId] as? String,
-            let initialNodeId = metadataDictionary[Constants.initialNodeId] as? String
-            else {
-                print("Cannot load matadata at \(metadataFileUrl)")
-                return nil
+            let metadataDictionary = NSKeyedUnarchiver.unarchiveObject(with: metadata) as? Dictionary
+        else {
+            print("Cannot load matadata at \(metadataFileUrl)")
+            return nil
         }
         
-        return [Constants.currentNodeId: currentNodeId,
-                Constants.graph: graph,
-                Constants.initialNodeId: initialNodeId]
-        
+        return ["metadata": metadataDictionary,
+                Constants.graph: graph]
     }
     
     static func load<T: State>(machineWithDictionary dictionary: Dictionary) -> StateMachineParams<T>? {
         
         // Prepare variables to use for output construction
         guard
-            let currentNodeId = dictionary[Constants.currentNodeId] as? String,
-            let initialNodeId = dictionary[Constants.initialNodeId] as? String,
-            let graphDictionary = dictionary[Constants.graph] as? [String: Any]
-            else { return nil }
-        let block = dictionary["block"] as! ((String) -> T)
+        let metadataDictionary = dictionary["metadata"] as? Dictionary,
+        let currentNodeId = metadataDictionary[Constants.currentNodeId] as? String,
+        let initialNodeId = metadataDictionary[Constants.initialNodeId] as? String,
+        let graphDictionary = dictionary[Constants.graph] as? [String: Any]
+        else { return nil }
+        
+        let stateBlock = (dictionary["state"] as? ((String) -> T)) ??  { string -> T in return T.init(string)! }
         var nodes = [String: Node<T>]()
         
         // Helper functions
@@ -68,7 +66,7 @@ struct Load {
             let nodeDictionary = nodeDictionary as! Dictionary
             
             // Get state description for node id
-            let state = block(stateValue(fromNodeId: id))
+            let state = stateBlock(stateValue(fromNodeId: id))
             
             // Get node from state
             let node = getNode(from: state)
@@ -78,7 +76,7 @@ struct Load {
             let transitions = nodeDictionary["transitions"] as! [Dictionary]
             for transition in transitions {
                 let id = transition["nodeId"] as! String
-                let destinationNode = getNode(from: block(stateValue(fromNodeId: id)))
+                let destinationNode = getNode(from: stateBlock(stateValue(fromNodeId: id)))
                 destinationNode.id = id
                 node.to(destinationNode)
             }
@@ -87,9 +85,10 @@ struct Load {
         
         // Set stateMachineParams
         var stateMachineParams: StateMachineParams<T> = StateMachineParams()
-        stateMachineParams.currentNode = getNode(from: block(stateValue(fromNodeId: currentNodeId)))
-        stateMachineParams.initialNode = getNode(from: block(stateValue(fromNodeId: initialNodeId)))
+        stateMachineParams.currentNode = getNode(from: stateBlock(stateValue(fromNodeId: currentNodeId)))
+        stateMachineParams.initialNode = getNode(from: stateBlock(stateValue(fromNodeId: initialNodeId)))
         stateMachineParams.nodes = nodes
+        stateMachineParams.autosave = (metadataDictionary["autosave"] as? Bool) ?? false
         return stateMachineParams
         
     }
