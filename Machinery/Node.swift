@@ -11,16 +11,12 @@ import Foundation
 final public class Node<T: State>: NSObject {
     
     // MARK: - Properties -
-    
-    // MARK: Public Properties
-    
+        
     var id: String = UUID().uuidString
     var state: T
     open var value: T {
         return state
     }
-    
-    // MARK: Private Properties
     
     weak var machine: StateMachine<T>!
     var destinationStates = [String: DictionaryValue]()

@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/salimbraksa/Desktop/Machinery/Build/Products/Debug-iphonesimulator/Machinery.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Machinery-Swift.h",
+          'external-contents': "/Users/salimbraksa/Desktop/Machinery/Build/Products/Debug-iphonesimulator/Machinery.framework/Headers/Machinery-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "Machinery.h",
+          'external-contents': "/Users/salimbraksa/Desktop/Machinery/Machinery/Machinery.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/salimbraksa/Desktop/Machinery/Build/Products/Debug-iphonesimulator/Machinery.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/salimbraksa/Desktop/Machinery/Build/Intermediates/Machinery.build/Debug-iphonesimulator/Machinery.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

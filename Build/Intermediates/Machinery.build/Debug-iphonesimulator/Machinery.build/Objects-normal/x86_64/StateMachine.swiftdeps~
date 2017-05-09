@@ -1,0 +1,514 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TransitionPrecedence"
+- "<-"
+- "<-!"
+- "StateHandler"
+- "StateMachine"
+- "AnyStateHandler"
+- "+"
+- "<-"
+- "<-!"
+provides-nominal:
+- "P9Machinery12StateHandler"
+- "C9Machinery12StateMachine"
+- "C9Machinery15AnyStateHandler"
+provides-member:
+- ["P9Machinery12StateHandler", ""]
+- ["C9Machinery12StateMachine", ""]
+- ["C9Machinery15AnyStateHandler", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "+"
+- !private "+="
+- !private "=="
+- "AnyStateHandler"
+- "AssignmentPrecedence"
+- !private "Container"
+- "NSObject"
+- "Node"
+- "NotificationCenter"
+- "State"
+- "StateHandler"
+- "StateMachine"
+- "String"
+- !private "StringLiteralType"
+- "TernaryPrecedence"
+- "Transition"
+- !private "UnicodeScalarType"
+- "Void"
+depends-member:
+- ["Ps9AnyObject", "AnyStateHandler"]
+- !private ["Ps9AnyObject", "Container"]
+- ["Ps9AnyObject", "Node"]
+- ["Ps9AnyObject", "NotificationCenter"]
+- ["Ps9AnyObject", "String"]
+- !private ["Ps9AnyObject", "Transition"]
+- !private ["Ps9AnyObject", "_didEnter"]
+- !private ["Ps9AnyObject", "_willExit"]
+- !private ["Ps9AnyObject", "add"]
+- !private ["Ps9AnyObject", "currentNode"]
+- ["Ps9AnyObject", "default"]
+- !private ["Ps9AnyObject", "description"]
+- !private ["Ps9AnyObject", "destination"]
+- !private ["Ps9AnyObject", "destinationNodes"]
+- !private ["Ps9AnyObject", "destinationStates"]
+- ["Ps9AnyObject", "didEnter"]
+- !private ["Ps9AnyObject", "didSet"]
+- !private ["Ps9AnyObject", "has"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "initial"]
+- !private ["Ps9AnyObject", "initialNode"]
+- !private ["Ps9AnyObject", "move"]
+- !private ["Ps9AnyObject", "node"]
+- !private ["Ps9AnyObject", "nodes"]
+- !private ["Ps9AnyObject", "source"]
+- !private ["Ps9AnyObject", "state"]
+- !private ["Ps9AnyObject", "stateHandlers"]
+- !private ["Ps9AnyObject", "try"]
+- ["Ps9AnyObject", "willExit"]
+- !private ["Ps9AnyObject", "willSet"]
+- ["Ps9AnyObject", ""]
+- ["C9Machinery15AnyStateHandler", "StateHandler"]
+- ["C9Machinery15AnyStateHandler", "T"]
+- ["C9Machinery15AnyStateHandler", "Void"]
+- !private ["C9Machinery15AnyStateHandler", "_didEnter"]
+- !private ["C9Machinery15AnyStateHandler", "_willExit"]
+- ["C9Machinery15AnyStateHandler", "deinit"]
+- ["C9Machinery15AnyStateHandler", "didEnter"]
+- ["C9Machinery15AnyStateHandler", "init"]
+- ["C9Machinery15AnyStateHandler", "willExit"]
+- !private ["Sa", "forEach"]
+- !private ["Sa", "map"]
+- !private ["Ps23BidirectionalCollection", "forEach"]
+- !private ["Ps23BidirectionalCollection", "map"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- ["Ps7CVarArg", "AnyStateHandler"]
+- !private ["Ps7CVarArg", "Container"]
+- ["Ps7CVarArg", "Node"]
+- ["Ps7CVarArg", "NotificationCenter"]
+- ["Ps7CVarArg", "String"]
+- !private ["Ps7CVarArg", "Transition"]
+- !private ["Ps7CVarArg", "add"]
+- !private ["Ps7CVarArg", "currentNode"]
+- ["Ps7CVarArg", "default"]
+- !private ["Ps7CVarArg", "description"]
+- !private ["Ps7CVarArg", "destinationNodes"]
+- !private ["Ps7CVarArg", "destinationStates"]
+- !private ["Ps7CVarArg", "didSet"]
+- !private ["Ps7CVarArg", "forEach"]
+- !private ["Ps7CVarArg", "has"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "initial"]
+- !private ["Ps7CVarArg", "initialNode"]
+- !private ["Ps7CVarArg", "map"]
+- !private ["Ps7CVarArg", "move"]
+- !private ["Ps7CVarArg", "node"]
+- !private ["Ps7CVarArg", "nodes"]
+- !private ["Ps7CVarArg", "state"]
+- !private ["Ps7CVarArg", "stateHandlers"]
+- !private ["Ps7CVarArg", "subscript"]
+- !private ["Ps7CVarArg", "try"]
+- !private ["Ps7CVarArg", "willSet"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Collection", "forEach"]
+- ["Ps10Collection", "init"]
+- !private ["Ps10Collection", "map"]
+- !private ["Ps10Collection", "subscript"]
+- !private ["Ps10Comparable", "init"]
+- !private ["V9Machinery9Container", "init"]
+- ["Ps28CustomDebugStringConvertible", "AnyStateHandler"]
+- !private ["Ps28CustomDebugStringConvertible", "Container"]
+- ["Ps28CustomDebugStringConvertible", "Node"]
+- ["Ps28CustomDebugStringConvertible", "NotificationCenter"]
+- ["Ps28CustomDebugStringConvertible", "String"]
+- !private ["Ps28CustomDebugStringConvertible", "Transition"]
+- !private ["Ps28CustomDebugStringConvertible", "add"]
+- !private ["Ps28CustomDebugStringConvertible", "currentNode"]
+- ["Ps28CustomDebugStringConvertible", "default"]
+- !private ["Ps28CustomDebugStringConvertible", "description"]
+- !private ["Ps28CustomDebugStringConvertible", "destinationNodes"]
+- !private ["Ps28CustomDebugStringConvertible", "destinationStates"]
+- !private ["Ps28CustomDebugStringConvertible", "didSet"]
+- !private ["Ps28CustomDebugStringConvertible", "forEach"]
+- !private ["Ps28CustomDebugStringConvertible", "has"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "initial"]
+- !private ["Ps28CustomDebugStringConvertible", "initialNode"]
+- !private ["Ps28CustomDebugStringConvertible", "map"]
+- !private ["Ps28CustomDebugStringConvertible", "move"]
+- !private ["Ps28CustomDebugStringConvertible", "node"]
+- !private ["Ps28CustomDebugStringConvertible", "nodes"]
+- !private ["Ps28CustomDebugStringConvertible", "state"]
+- !private ["Ps28CustomDebugStringConvertible", "stateHandlers"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- !private ["Ps28CustomDebugStringConvertible", "try"]
+- !private ["Ps28CustomDebugStringConvertible", "willSet"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "forEach"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "map"]
+- !private ["Ps17CustomReflectable", "subscript"]
+- ["Ps23CustomStringConvertible", "AnyStateHandler"]
+- !private ["Ps23CustomStringConvertible", "Container"]
+- ["Ps23CustomStringConvertible", "Node"]
+- ["Ps23CustomStringConvertible", "NotificationCenter"]
+- ["Ps23CustomStringConvertible", "String"]
+- !private ["Ps23CustomStringConvertible", "Transition"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "add"]
+- !private ["Ps23CustomStringConvertible", "currentNode"]
+- ["Ps23CustomStringConvertible", "default"]
+- !private ["Ps23CustomStringConvertible", "description"]
+- !private ["Ps23CustomStringConvertible", "destinationNodes"]
+- !private ["Ps23CustomStringConvertible", "destinationStates"]
+- !private ["Ps23CustomStringConvertible", "didSet"]
+- !private ["Ps23CustomStringConvertible", "forEach"]
+- !private ["Ps23CustomStringConvertible", "has"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "initial"]
+- !private ["Ps23CustomStringConvertible", "initialNode"]
+- !private ["Ps23CustomStringConvertible", "map"]
+- !private ["Ps23CustomStringConvertible", "move"]
+- !private ["Ps23CustomStringConvertible", "node"]
+- !private ["Ps23CustomStringConvertible", "nodes"]
+- !private ["Ps23CustomStringConvertible", "state"]
+- !private ["Ps23CustomStringConvertible", "stateHandlers"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "try"]
+- !private ["Ps23CustomStringConvertible", "willSet"]
+- ["Ps23CustomStringConvertible", ""]
+- ["Vs10Dictionary", "init"]
+- !private ["Vs10Dictionary", "subscript"]
+- ["Ps9Equatable", "AnyStateHandler"]
+- !private ["Ps9Equatable", "Container"]
+- ["Ps9Equatable", "Node"]
+- ["Ps9Equatable", "NotificationCenter"]
+- ["Ps9Equatable", "String"]
+- !private ["Ps9Equatable", "Transition"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "add"]
+- !private ["Ps9Equatable", "currentNode"]
+- ["Ps9Equatable", "default"]
+- !private ["Ps9Equatable", "description"]
+- !private ["Ps9Equatable", "destinationNodes"]
+- !private ["Ps9Equatable", "destinationStates"]
+- !private ["Ps9Equatable", "didSet"]
+- !private ["Ps9Equatable", "has"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "initial"]
+- !private ["Ps9Equatable", "initialNode"]
+- !private ["Ps9Equatable", "move"]
+- !private ["Ps9Equatable", "node"]
+- !private ["Ps9Equatable", "nodes"]
+- !private ["Ps9Equatable", "state"]
+- !private ["Ps9Equatable", "stateHandlers"]
+- !private ["Ps9Equatable", "try"]
+- !private ["Ps9Equatable", "willSet"]
+- ["Ps9Equatable", ""]
+- !private ["Ps25ExpressibleByArrayLiteral", "forEach"]
+- !private ["Ps25ExpressibleByArrayLiteral", "map"]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps30ExpressibleByDictionaryLiteral", "init"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "subscript"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- ["Ps8Hashable", "AnyStateHandler"]
+- !private ["Ps8Hashable", "Container"]
+- ["Ps8Hashable", "Node"]
+- ["Ps8Hashable", "NotificationCenter"]
+- ["Ps8Hashable", "String"]
+- !private ["Ps8Hashable", "Transition"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "add"]
+- !private ["Ps8Hashable", "currentNode"]
+- ["Ps8Hashable", "default"]
+- !private ["Ps8Hashable", "description"]
+- !private ["Ps8Hashable", "destinationNodes"]
+- !private ["Ps8Hashable", "destinationStates"]
+- !private ["Ps8Hashable", "didSet"]
+- !private ["Ps8Hashable", "has"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "initial"]
+- !private ["Ps8Hashable", "initialNode"]
+- !private ["Ps8Hashable", "move"]
+- !private ["Ps8Hashable", "node"]
+- !private ["Ps8Hashable", "nodes"]
+- !private ["Ps8Hashable", "state"]
+- !private ["Ps8Hashable", "stateHandlers"]
+- !private ["Ps8Hashable", "try"]
+- !private ["Ps8Hashable", "willSet"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["Ps17MutableCollection", "forEach"]
+- !private ["Ps17MutableCollection", "map"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "+"]
+- ["CSo8NSObject", "<-"]
+- ["CSo8NSObject", "<-!"]
+- ["CSo8NSObject", "AnyStateHandler"]
+- !private ["CSo8NSObject", "Container"]
+- ["CSo8NSObject", "Node"]
+- ["CSo8NSObject", "NotificationCenter"]
+- ["CSo8NSObject", "StateHandler"]
+- ["CSo8NSObject", "StateMachine"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "T"]
+- ["CSo8NSObject", "Transition"]
+- ["CSo8NSObject", "add"]
+- ["CSo8NSObject", "currentNode"]
+- ["CSo8NSObject", "currentState"]
+- ["CSo8NSObject", "debugDescription"]
+- ["CSo8NSObject", "default"]
+- !private ["CSo8NSObject", "description"]
+- !private ["CSo8NSObject", "destinationNodes"]
+- !private ["CSo8NSObject", "destinationStates"]
+- ["CSo8NSObject", "didSet"]
+- ["CSo8NSObject", "handle"]
+- !private ["CSo8NSObject", "has"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "initial"]
+- ["CSo8NSObject", "initialNode"]
+- ["CSo8NSObject", "move"]
+- ["CSo8NSObject", "node"]
+- ["CSo8NSObject", "nodes"]
+- ["CSo8NSObject", "notificationCenter"]
+- !private ["CSo8NSObject", "state"]
+- ["CSo8NSObject", "stateHandlers"]
+- ["CSo8NSObject", "try"]
+- ["CSo8NSObject", "willSet"]
+- ["CSo8NSObject", ""]
+- ["PSo16NSObjectProtocol", "AnyStateHandler"]
+- !private ["PSo16NSObjectProtocol", "Container"]
+- ["PSo16NSObjectProtocol", "Node"]
+- ["PSo16NSObjectProtocol", "NotificationCenter"]
+- ["PSo16NSObjectProtocol", "String"]
+- !private ["PSo16NSObjectProtocol", "Transition"]
+- !private ["PSo16NSObjectProtocol", "add"]
+- !private ["PSo16NSObjectProtocol", "currentNode"]
+- ["PSo16NSObjectProtocol", "default"]
+- !private ["PSo16NSObjectProtocol", "description"]
+- !private ["PSo16NSObjectProtocol", "destinationNodes"]
+- !private ["PSo16NSObjectProtocol", "destinationStates"]
+- !private ["PSo16NSObjectProtocol", "didSet"]
+- !private ["PSo16NSObjectProtocol", "has"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "initial"]
+- !private ["PSo16NSObjectProtocol", "initialNode"]
+- !private ["PSo16NSObjectProtocol", "move"]
+- !private ["PSo16NSObjectProtocol", "node"]
+- !private ["PSo16NSObjectProtocol", "nodes"]
+- !private ["PSo16NSObjectProtocol", "state"]
+- !private ["PSo16NSObjectProtocol", "stateHandlers"]
+- !private ["PSo16NSObjectProtocol", "try"]
+- !private ["PSo16NSObjectProtocol", "willSet"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["C9Machinery4Node", "deinit"]
+- !private ["C9Machinery4Node", "description"]
+- !private ["C9Machinery4Node", "destinationNodes"]
+- !private ["C9Machinery4Node", "destinationStates"]
+- !private ["C9Machinery4Node", "has"]
+- !private ["C9Machinery4Node", "init"]
+- !private ["C9Machinery4Node", "state"]
+- ["CSo18NotificationCenter", "default"]
+- !private ["Ps22RandomAccessCollection", "forEach"]
+- !private ["Ps22RandomAccessCollection", "map"]
+- !private ["Ps26RangeReplaceableCollection", "forEach"]
+- !private ["Ps26RangeReplaceableCollection", "map"]
+- !private ["Ps8Sequence", "forEach"]
+- ["Ps8Sequence", "init"]
+- !private ["Ps8Sequence", "map"]
+- !private ["Ps8Sequence", "subscript"]
+- ["P9Machinery12StateHandler", "State"]
+- ["P9Machinery12StateHandler", "T"]
+- !private ["P9Machinery12StateHandler", "_didEnter"]
+- !private ["P9Machinery12StateHandler", "_willExit"]
+- ["P9Machinery12StateHandler", "didEnter"]
+- !private ["P9Machinery12StateHandler", "init"]
+- ["P9Machinery12StateHandler", "willExit"]
+- ["P9Machinery12StateHandler", ""]
+- ["C9Machinery12StateMachine", "+"]
+- ["C9Machinery12StateMachine", "<-"]
+- ["C9Machinery12StateMachine", "<-!"]
+- ["C9Machinery12StateMachine", "AnyStateHandler"]
+- !private ["C9Machinery12StateMachine", "Container"]
+- ["C9Machinery12StateMachine", "Node"]
+- ["C9Machinery12StateMachine", "NotificationCenter"]
+- ["C9Machinery12StateMachine", "StateHandler"]
+- ["C9Machinery12StateMachine", "StateMachine"]
+- ["C9Machinery12StateMachine", "String"]
+- ["C9Machinery12StateMachine", "T"]
+- ["C9Machinery12StateMachine", "Transition"]
+- ["C9Machinery12StateMachine", "add"]
+- !private ["C9Machinery12StateMachine", "currentNode"]
+- ["C9Machinery12StateMachine", "currentState"]
+- ["C9Machinery12StateMachine", "debugDescription"]
+- ["C9Machinery12StateMachine", "deinit"]
+- !private ["C9Machinery12StateMachine", "didSet"]
+- ["C9Machinery12StateMachine", "handle"]
+- ["C9Machinery12StateMachine", "init"]
+- ["C9Machinery12StateMachine", "initial"]
+- !private ["C9Machinery12StateMachine", "initialNode"]
+- ["C9Machinery12StateMachine", "move"]
+- ["C9Machinery12StateMachine", "node"]
+- !private ["C9Machinery12StateMachine", "nodes"]
+- !private ["C9Machinery12StateMachine", "notificationCenter"]
+- !private ["C9Machinery12StateMachine", "stateHandlers"]
+- ["C9Machinery12StateMachine", "try"]
+- !private ["C9Machinery12StateMachine", "willSet"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- !private ["C9Machinery10Transition", "destination"]
+- !private ["C9Machinery10Transition", "init"]
+- !private ["C9Machinery10Transition", "source"]
+- !private ["Ps14_ArrayProtocol", "forEach"]
+- !private ["Ps14_ArrayProtocol", "map"]
+- !private ["Ps23_BidirectionalIndexable", "forEach"]
+- !private ["Ps23_BidirectionalIndexable", "map"]
+- !private ["Ps24_DestructorSafeContainer", "forEach"]
+- !private ["Ps24_DestructorSafeContainer", "map"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- ["Ps9_Hashable", "AnyStateHandler"]
+- !private ["Ps9_Hashable", "Container"]
+- ["Ps9_Hashable", "Node"]
+- ["Ps9_Hashable", "NotificationCenter"]
+- ["Ps9_Hashable", "String"]
+- !private ["Ps9_Hashable", "Transition"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps9_Hashable", "add"]
+- !private ["Ps9_Hashable", "currentNode"]
+- ["Ps9_Hashable", "default"]
+- !private ["Ps9_Hashable", "description"]
+- !private ["Ps9_Hashable", "destinationNodes"]
+- !private ["Ps9_Hashable", "destinationStates"]
+- !private ["Ps9_Hashable", "didSet"]
+- !private ["Ps9_Hashable", "has"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "initial"]
+- !private ["Ps9_Hashable", "initialNode"]
+- !private ["Ps9_Hashable", "move"]
+- !private ["Ps9_Hashable", "node"]
+- !private ["Ps9_Hashable", "nodes"]
+- !private ["Ps9_Hashable", "state"]
+- !private ["Ps9_Hashable", "stateHandlers"]
+- !private ["Ps9_Hashable", "try"]
+- !private ["Ps9_Hashable", "willSet"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps10_Indexable", "forEach"]
+- ["Ps10_Indexable", "init"]
+- !private ["Ps10_Indexable", "map"]
+- !private ["Ps10_Indexable", "subscript"]
+- !private ["Ps14_IndexableBase", "forEach"]
+- ["Ps14_IndexableBase", "init"]
+- !private ["Ps14_IndexableBase", "map"]
+- !private ["Ps14_IndexableBase", "subscript"]
+- !private ["Ps17_MutableIndexable", "forEach"]
+- !private ["Ps17_MutableIndexable", "map"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "forEach"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "map"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- !private ["Ps22_RandomAccessIndexable", "forEach"]
+- !private ["Ps22_RandomAccessIndexable", "map"]
+- !private ["Ps26_RangeReplaceableIndexable", "forEach"]
+- !private ["Ps26_RangeReplaceableIndexable", "map"]
+depends-nominal:
+- "Ps9AnyObject"
+- "C9Machinery15AnyStateHandler"
+- !private "Sa"
+- !private "Ps23BidirectionalCollection"
+- !private "Sb"
+- "Ps7CVarArg"
+- "Ps10Collection"
+- !private "Ps10Comparable"
+- !private "V9Machinery9Container"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Vs10Dictionary"
+- "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps30ExpressibleByDictionaryLiteral"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- !private "Ps17MutableCollection"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "C9Machinery4Node"
+- "CSo18NotificationCenter"
+- !private "Ps22RandomAccessCollection"
+- !private "Ps26RangeReplaceableCollection"
+- "Ps8Sequence"
+- "P9Machinery12StateHandler"
+- "C9Machinery12StateMachine"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- !private "C9Machinery10Transition"
+- !private "Ps14_ArrayProtocol"
+- !private "Ps23_BidirectionalIndexable"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- "Ps10_Indexable"
+- "Ps14_IndexableBase"
+- !private "Ps17_MutableIndexable"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Ps22_RandomAccessIndexable"
+- !private "Ps26_RangeReplaceableIndexable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/salimbraksa/Desktop/Machinery/Machinery/Machinery.h"
+- "/Users/salimbraksa/Desktop/Machinery/Build/Intermediates/Machinery.build/Debug-iphonesimulator/Machinery.build/unextended-module.modulemap"
+interface-hash: "0d895d8f5e6f382819d008957fd16690"

@@ -1,0 +1,10 @@
+framework module Machinery {
+  umbrella header "Machinery.h"
+
+  export *
+  module * { export * }
+}
+
+module Machinery.__Swift {
+    exclude header "Machinery-Swift.h"
+}

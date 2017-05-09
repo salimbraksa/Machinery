@@ -1,0 +1,227 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Node"
+provides-nominal:
+- "C9Machinery4Node"
+provides-member:
+- ["C9Machinery4Node", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "=="
+- "AssignmentPrecedence"
+- "Bool"
+- "Container"
+- "NSObject"
+- "Node"
+- "State"
+- "StateMachine"
+- "String"
+- !private "StringLiteralType"
+- "UUID"
+depends-member:
+- ["Ps9AnyObject", "DictionaryValue"]
+- ["Ps9AnyObject", "String"]
+- ["Ps9AnyObject", "UUID"]
+- !private ["Ps9AnyObject", "destinationStates"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "state"]
+- ["Ps9AnyObject", ""]
+- ["Ps7CVarArg", "DictionaryValue"]
+- ["Ps7CVarArg", "String"]
+- ["Ps7CVarArg", "UUID"]
+- !private ["Ps7CVarArg", "destinationStates"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "state"]
+- !private ["Ps7CVarArg", "subscript"]
+- !private ["Ps7CVarArg", "values"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Collection", "contains"]
+- !private ["Ps10Collection", "flatMap"]
+- ["Ps10Collection", "init"]
+- !private ["Ps10Collection", "subscript"]
+- !private ["Ps10Collection", "values"]
+- !private ["V9Machinery9Container", "value"]
+- ["Ps28CustomDebugStringConvertible", "DictionaryValue"]
+- ["Ps28CustomDebugStringConvertible", "String"]
+- ["Ps28CustomDebugStringConvertible", "UUID"]
+- !private ["Ps28CustomDebugStringConvertible", "destinationStates"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "state"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- ["Ps28CustomDebugStringConvertible", "uuidString"]
+- !private ["Ps28CustomDebugStringConvertible", "values"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "subscript"]
+- ["Ps17CustomReflectable", "uuidString"]
+- !private ["Ps17CustomReflectable", "values"]
+- ["Ps23CustomStringConvertible", "DictionaryValue"]
+- ["Ps23CustomStringConvertible", "String"]
+- ["Ps23CustomStringConvertible", "UUID"]
+- !private ["Ps23CustomStringConvertible", "destinationStates"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "state"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- ["Ps23CustomStringConvertible", "uuidString"]
+- !private ["Ps23CustomStringConvertible", "values"]
+- ["Ps23CustomStringConvertible", ""]
+- ["Vs10Dictionary", "init"]
+- !private ["Vs10Dictionary", "subscript"]
+- !private ["Vs10Dictionary", "values"]
+- ["Ps9Equatable", "DictionaryValue"]
+- ["Ps9Equatable", "String"]
+- ["Ps9Equatable", "UUID"]
+- !private ["Ps9Equatable", "destinationStates"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "state"]
+- ["Ps9Equatable", "uuidString"]
+- ["Ps9Equatable", ""]
+- ["Ps30ExpressibleByDictionaryLiteral", "init"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "subscript"]
+- !private ["Ps30ExpressibleByDictionaryLiteral", "values"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- ["Ps8Hashable", "DictionaryValue"]
+- ["Ps8Hashable", "String"]
+- ["Ps8Hashable", "UUID"]
+- !private ["Ps8Hashable", "destinationStates"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "state"]
+- ["Ps8Hashable", "uuidString"]
+- ["Ps8Hashable", ""]
+- !private ["Ps22LazyCollectionProtocol", "contains"]
+- !private ["Ps22LazyCollectionProtocol", "flatMap"]
+- !private ["Vs17LazyMapCollection", "contains"]
+- !private ["Vs17LazyMapCollection", "flatMap"]
+- !private ["Ps20LazySequenceProtocol", "contains"]
+- !private ["Ps20LazySequenceProtocol", "flatMap"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "Container"]
+- ["CSo8NSObject", "DictionaryValue"]
+- ["CSo8NSObject", "Node"]
+- ["CSo8NSObject", "StateMachine"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "T"]
+- ["CSo8NSObject", "UUID"]
+- ["CSo8NSObject", "destinationNodes"]
+- ["CSo8NSObject", "destinationStates"]
+- ["CSo8NSObject", "has"]
+- ["CSo8NSObject", "id"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "machine"]
+- ["CSo8NSObject", "state"]
+- ["CSo8NSObject", "value"]
+- ["CSo8NSObject", ""]
+- ["PSo16NSObjectProtocol", "DictionaryValue"]
+- ["PSo16NSObjectProtocol", "String"]
+- ["PSo16NSObjectProtocol", "UUID"]
+- !private ["PSo16NSObjectProtocol", "destinationStates"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "state"]
+- ["PSo16NSObjectProtocol", ""]
+- ["C9Machinery4Node", "Bool"]
+- ["C9Machinery4Node", "Container"]
+- ["C9Machinery4Node", "DictionaryValue"]
+- ["C9Machinery4Node", "Node"]
+- ["C9Machinery4Node", "StateMachine"]
+- ["C9Machinery4Node", "String"]
+- ["C9Machinery4Node", "T"]
+- ["C9Machinery4Node", "UUID"]
+- ["C9Machinery4Node", "deinit"]
+- ["C9Machinery4Node", "destinationNodes"]
+- ["C9Machinery4Node", "destinationStates"]
+- ["C9Machinery4Node", "has"]
+- ["C9Machinery4Node", "id"]
+- ["C9Machinery4Node", "init"]
+- ["C9Machinery4Node", "machine"]
+- ["C9Machinery4Node", "state"]
+- ["C9Machinery4Node", "value"]
+- ["P10Foundation20ReferenceConvertible", "init"]
+- ["P10Foundation20ReferenceConvertible", "uuidString"]
+- !private ["Ps8Sequence", "contains"]
+- !private ["Ps8Sequence", "flatMap"]
+- ["Ps8Sequence", "init"]
+- !private ["Ps8Sequence", "subscript"]
+- !private ["Ps8Sequence", "values"]
+- !private ["Vs12StaticString", "init"]
+- ["V10Foundation4UUID", "init"]
+- ["V10Foundation4UUID", "uuidString"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- ["Ps9_Hashable", "DictionaryValue"]
+- ["Ps9_Hashable", "String"]
+- ["Ps9_Hashable", "UUID"]
+- !private ["Ps9_Hashable", "destinationStates"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "state"]
+- ["Ps9_Hashable", "uuidString"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps10_Indexable", "contains"]
+- !private ["Ps10_Indexable", "flatMap"]
+- ["Ps10_Indexable", "init"]
+- !private ["Ps10_Indexable", "subscript"]
+- !private ["Ps10_Indexable", "values"]
+- !private ["Ps14_IndexableBase", "contains"]
+- !private ["Ps14_IndexableBase", "flatMap"]
+- ["Ps14_IndexableBase", "init"]
+- !private ["Ps14_IndexableBase", "subscript"]
+- !private ["Ps14_IndexableBase", "values"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- ["Ps21_ObjectiveCBridgeable", "uuidString"]
+- !private ["Ps21_ObjectiveCBridgeable", "values"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps7CVarArg"
+- "Ps10Collection"
+- !private "V9Machinery9Container"
+- "Ps28CustomDebugStringConvertible"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Vs10Dictionary"
+- "Ps9Equatable"
+- "Ps30ExpressibleByDictionaryLiteral"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps22LazyCollectionProtocol"
+- !private "Vs17LazyMapCollection"
+- !private "Ps20LazySequenceProtocol"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "C9Machinery4Node"
+- "P10Foundation20ReferenceConvertible"
+- "Ps8Sequence"
+- !private "Vs12StaticString"
+- "V10Foundation4UUID"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps9_Hashable"
+- "Ps10_Indexable"
+- "Ps14_IndexableBase"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/salimbraksa/Desktop/Machinery/Machinery/Machinery.h"
+- "/Users/salimbraksa/Desktop/Machinery/Build/Intermediates/Machinery.build/Debug-iphonesimulator/Machinery.build/unextended-module.modulemap"
+interface-hash: "0d40a6eb43f2c81f57b07c50b9c1a908"
