@@ -8,7 +8,14 @@
 
 import Foundation
 
-public typealias State = LosslessStringConvertible
+precedencegroup ArrowPrecedence {
+    higherThan: AdditionPrecedence
+    associativity: left
+}
+
+infix operator =>: ArrowPrecedence
+
+public typealias State = CustomStringConvertible
 
 public extension State where Self: RawRepresentable, Self.RawValue: LosslessStringConvertible {
 

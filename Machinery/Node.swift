@@ -8,14 +8,6 @@
 
 import Foundation
 
-precedencegroup TransitionPrecedence {
-    higherThan: AdditionPrecedence
-    associativity: left
-}
-
-infix operator <=>: TransitionPrecedence
-infix operator =>: TransitionPrecedence
-
 final public class Node<T: State>: NSObject {
     
     // MARK: - Properties -
@@ -40,12 +32,7 @@ final public class Node<T: State>: NSObject {
     }
     
     // MARK: - Managing Destination Node Nodes -
-    
-    open func to(_ node: Node<T>) {
-        let transition = Transition(source: self, destination: node)
-        transition.identified(by: "to \(node.state.description)")
-    }
-    
+
     func state(withIdentifier identifier: String) -> Node? {
         return destinationStates[identifier]?.value
     }
@@ -60,38 +47,8 @@ final public class Node<T: State>: NSObject {
         return destinationStates.values.flatMap { $0.value }
     }
     
-    // MARK: - Converting Node
-    
-    func dictionaryRepresention() -> Dictionary {
-        
-        // Initialize dictionary
-        var dictionary = Dictionary()
-        
-        // Populate dictionary with transitions
-        var transitions = [Dictionary]()
-        for (key, container) in destinationStates {
-            
-            var transition = Dictionary()
-            transition["transitionId"] = key
-            transition["nodeId"] = container.value.id
-            transitions.append(transition)
-            
-        }
-        dictionary["transitions"] = transitions
-        
-        // Set value as an encoded object
-        dictionary["value"] = state.description
-    
-        return [id: dictionary]
-        
-    }
-    
     // MARK: - Supporting Types -
 
     typealias DictionaryValue = Container<Node>
     
-}
-
-public func ==<T: State> (left: Transition<T>, right: String) {
-    left.identified(by: right)
 }

@@ -8,23 +8,28 @@
 
 import Foundation
 
-typealias Dictionary = [String: Any]
+precedencegroup TransitionPrecedence {
+    associativity: left
+}
 
-open class StateMachine<T: State>: NSObject, Storable {
+infix operator <-: TransitionPrecedence
+infix operator <-!: TransitionPrecedence
+
+public protocol StateHandler {
+    
+    associatedtype T: State
+    
+    func didEnter(state: T)
+    
+    func willExit(state: T)
+    
+}
+
+open class StateMachine<T: State>: NSObject {
     
     // MARK: - Public Properties
     
-    public var currentState: T { return currentNode.state }
-    public var identifier: String?
-    public var saveWhen = { (state: T) -> Bool in return true }
-    
-    public var autosave = false {
-        didSet {
-            if !repository.isExist(machine: self) {
-                save()
-            }
-        }
-    }
+    open var currentState: T { return currentNode.state }
     
     open override var debugDescription: String {
         var result = ""
@@ -42,16 +47,21 @@ open class StateMachine<T: State>: NSObject, Storable {
     
     // MARK: - Private Properties
     
-    fileprivate let repository = Repository()
+    private var stateHandlers = [String: AnyStateHandler<T>]()
+    
+    // MARK: - Private Properties
+    
     fileprivate var initialNode: Node<T>!
     fileprivate let notificationCenter = NotificationCenter.default
     fileprivate var nodes = [String: Node<T>]()
     
     fileprivate var currentNode: Node<T>! {
-        didSet {
-            if autosave && saveWhen(currentNode.state) {
-                self.save()
+        willSet {
+            if let currentNode = self.currentNode {
+                willSet(currentNode: currentNode)
             }
+        } didSet {
+            didSet(currentNode: currentNode)
         }
     }
     
@@ -65,64 +75,24 @@ open class StateMachine<T: State>: NSObject, Storable {
         super.init()
         self.initial(initial)
     }
-    
-    private init(nodes: [String: Node<T>]) {
-        self.nodes = nodes
-    }
-    
-    public convenience init?(identifier: String, state: ( (String) -> T)? = nil) {
-        var dictionary = Repository.load(machineWithRestorationIdentifier: identifier) ?? [:]
-        dictionary["state"] = state
-        self.init(dictionary: dictionary)
-        self.identifier = identifier
-        
-    }
-    
-    public convenience init(restorationIdentifier identifier: String, state: ( (String) -> T)? = nil, orNew new: @escaping (StateMachine<T>) -> ()) {
-        
-        var dictionary = Repository.load(machineWithRestorationIdentifier: identifier) ?? [:]
-        dictionary["state"] = state
-        dictionary["creation"] = new
-        self.init(dictionary: dictionary)!
-        self.identifier = identifier
-        
-    }
-    
-    required public convenience init?(dictionary: [String : Any]) {
-        
-        guard let params: StateMachineParams<T> = Repository.load(machineWithDictionary: dictionary) else {
-            
-            if let creation = dictionary["creation"] as? (StateMachine<T>) -> () {
-                self.init()
-                creation(self)
-            }
-            return nil
-            
-        }
-        
-        self.init(nodes: params.nodes)
-        self.initial(params.initialNode.state)
-        self.currentNode = params.currentNode
-        self.autosave = params.autosave
-        
-    }
-    
+
     // MARK: - Performing Transitions
     
     @discardableResult
-    open func next(_ state: T) -> StateMachine<T> {
-        
-        guard let destinationNode = currentNode.state(withIdentifier: "to \(state.description)")
-        else { print("Couldn't perform transition from \(currentNode.state) to \(state) "); return self }
-        let userInfo = ["source-state": currentNode.state, "dest-state": destinationNode.state]
-        
-        notificationCenter.post(name: NotificationName.willPerformTransition, object: nil, userInfo: userInfo)
-        currentNode = destinationNode
-        notificationCenter.post(name: NotificationName.didPerformTransition, object: nil, userInfo: userInfo)
-        
+    open func move(to state: T) -> StateMachine<T> {
+        let node = self.nodes[state.description]
+        self.currentNode = node
         return self
 
     }
+    
+    @discardableResult
+    open func `try`(_ state: T) -> StateMachine<T> {
+        guard let destinationNode = currentNode.state(withIdentifier: "to \(state.description)") else { return self }
+        currentNode = destinationNode
+        return self
+    }
+    
     
     // MARK: - Machine construction
     
@@ -137,96 +107,101 @@ open class StateMachine<T: State>: NSObject, Storable {
     }
     
     @discardableResult
-    open func from(_ sourceState: T, to destinationState: T) -> StateMachine<T> {
+    public func add(_ transition: Transition<T>) -> StateMachine<T> {
         
-        let sourceNode = self.node(from: sourceState)
-        let destinationNode = self.node(from: destinationState)
-        sourceNode.to(destinationNode)
+        let source = transition.source
+        let destination = transition.destination
+        
+        let identifier = "to \(destination.description)"
+        
+        let isWeak = destination.has(node: source)
+        source.destinationStates[identifier] = Container(value: destination, isWeak: isWeak)
+        
         return self
         
     }
     
     @discardableResult
-    open func to(_ destinationState: T) -> StateMachine<T> {
-        return from(initialNode.state, to: destinationState)
+    open func add(_ state: T) -> StateMachine<T> {
+        if nodes[state.description] == nil {
+            nodes[state.description] = Node(state)
+        }
+        return self
     }
     
+    @discardableResult
+    open func add(_ states: T...) -> StateMachine<T> {
+        states.forEach { self.add($0) }
+        return self
+    }
+    
+    @discardableResult
+    open func add(source: T, destination: T) -> StateMachine<T> {
+        let source = self.node(from: source)
+        let destination = self.node(from: destination)
+        return self.add(Transition(source: source, destination: destination))
+    }
+
     func node(from state: T) -> Node<T> {
         if nodes[state.description] == nil {
             nodes[state.description] = Node(state)
         }
         return nodes[state.description]!
     }
-
-    // MARK: - Machine repository
     
-    open func dictionaryRepresention() -> [String: Any] {
-        
-        // Transform the entire graph into dictionary
-        var dictionary = Dictionary()
-        for (_, node) in nodes { 
-            dictionary += node.dictionaryRepresention()
-        }
-        
-        return [Constants.currentNodeId: currentNode.id,
-                Constants.initialNodeId: initialNode.id,
-                Constants.graph: dictionary]
-        
+    // MARK: - State Handling
+    
+    open func handle<H: StateHandler>(_ state: T, with handler: H) where H.T == T {
+        self.stateHandlers[state.description] = AnyStateHandler<T>(handler)
     }
     
-    /// Manually saves the machine's current configuration
-    private func save() {
-        repository.save(machine: self)
-    }
+    // MARK: - Property Observers
 
-    // MARK: Operator
+    private func willSet(currentNode: Node<T>) {
+        let handler = self.stateHandlers[currentNode.state.description]
+        handler?.willExit(state: currentNode.state)
+    }
+    
+    private func didSet(currentNode: Node<T>) {
+        let handler = self.stateHandlers[currentNode.state.description]
+        handler?.didEnter(state: currentNode.state)
+    }
+    
+    // MARK: - Operator
     
     @discardableResult
     open static func + (left: StateMachine, right: (source: T, destination: T)) -> StateMachine {
-        return left.from(right.source, to: right.destination)
+        return left.add(source: right.source, destination: right.destination)
     }
     
     @discardableResult
-    open static func => (left: StateMachine, right: T) -> StateMachine {
-        return left.next(right)
+    open static func <- (left: StateMachine, right: T) -> StateMachine {
+        return left.try(right)
+    }
+    
+    @discardableResult
+    open static func <-! (left: StateMachine, right: T) -> StateMachine {
+        return left.move(to: right)
     }
     
 }
 
-// MARK: - Notifications -
-
-public extension StateMachine {
+class AnyStateHandler<T: State>: StateHandler {
     
-    // MARK: - Notifications Subscription
+    private let _willExit: (T) -> Void
+    private let _didEnter: (T) -> Void
     
-    func subscribe<S: Subscriber>(_ subscriber: S) where S.S == T {
-        
-        notificationCenter.addObserver(forName: NotificationName.didPerformTransition, object: nil, queue: nil) { notification in
-            guard let notification = StateMachineNotification<T>(notification: notification) else { return }
-            subscriber.stateMachine(self, didPerformTransitionFrom: notification.sourceState, to: notification.destinationState)
-        }
-        
-        notificationCenter.addObserver(forName: NotificationName.willPerformTransition, object: nil, queue: nil) { notification in
-            guard let notification = StateMachineNotification<T>(notification: notification) else { return }
-            subscriber.stateMachine(self, willPerformTransitionFrom: notification.sourceState, to: notification.destinationState)
-        }
-        
-        notificationCenter.addObserver(forName: NotificationName.stateMachineStarted, object: nil, queue: nil) { _ in
-            subscriber.stateMachine(self, startedAtState: self.currentNode.state)
-        }
-        
-        self.notificationCenter.post(name: NotificationName.stateMachineStarted, object: nil)
-        
+    init<H: StateHandler>(_ handler: H) where H.T == T {
+        self._willExit = handler.willExit(state:)
+        self._didEnter = handler.didEnter(state:)
     }
     
-}
-
-// MARK: - Notification Names -
-
-fileprivate struct NotificationName {
+    func willExit(state: T) {
+        self._willExit(state)
+    }
     
-    static let didPerformTransition = Notification.Name("didPerformTransition")
-    static let willPerformTransition = Notification.Name("willPerformTransition")
-    static let stateMachineStarted = Notification.Name("stateMachineStarted")
+    func didEnter(state: T) {
+        self._didEnter(state)
+    }
     
 }

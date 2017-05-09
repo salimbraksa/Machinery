@@ -18,13 +18,4 @@ open class Transition<T: State> {
         self.destination = destination
     }
     
-    @discardableResult
-    open func identified(by identifier: String) -> Node<T> {
-        
-        let isWeak = destination.has(node: source)
-        source.destinationStates[identifier] = Container(value: destination, isWeak: isWeak)
-        return destination
-        
-    }
-    
 }
