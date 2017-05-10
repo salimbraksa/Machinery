@@ -67,7 +67,7 @@ open class StateMachine<T: State>: NSObject {
     
     // MARK: - Initializer
     
-    private override init() {
+    public override init() {
         super.init()
     }
     
