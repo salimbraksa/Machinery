@@ -511,4 +511,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
 - "/Users/salimbraksa/Desktop/Machinery/Machinery/Machinery.h"
 - "/Users/salimbraksa/Desktop/Machinery/Build/Intermediates/Machinery.build/Debug-iphonesimulator/Machinery.build/unextended-module.modulemap"
-interface-hash: "0d895d8f5e6f382819d008957fd16690"
+interface-hash: "fc9ed6993d507f084c54b0be1f373d2e"

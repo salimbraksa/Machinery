@@ -81,6 +81,7 @@ open class StateMachine<T: State>: NSObject {
     @discardableResult
     open func move(to state: T) -> StateMachine<T> {
         let node = self.nodes[state.description]
+        node?.state = state
         self.currentNode = node
         return self
 

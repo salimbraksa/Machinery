@@ -1,9 +1,9 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
 options: "b31bd03fda6f632fed2b859a5961e10b"
-build_time: [547690312, 152076000]
+build_time: [547694214, 754197000]
 inputs:
   "/Users/salimbraksa/Desktop/Machinery/Machinery/Transition.swift": [547686754, 0]
   "/Users/salimbraksa/Desktop/Machinery/Machinery/Container.swift": [540859632, 0]
-  "/Users/salimbraksa/Desktop/Machinery/Machinery/StateMachine.swift": [547686754, 0]
+  "/Users/salimbraksa/Desktop/Machinery/Machinery/StateMachine.swift": [547690331, 0]
   "/Users/salimbraksa/Desktop/Machinery/Machinery/Node.swift": [547689360, 0]
   "/Users/salimbraksa/Desktop/Machinery/Machinery/State.swift": [547686754, 0]
