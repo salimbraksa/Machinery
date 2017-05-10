@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'Machinery'
-  s.version = '0.1'
+  s.version = '0.2'
   s.license = 'MIT'
   s.summary = 'Simple State Machine in Swift'
   s.homepage = 'https://github.com/salimbraksa/Machinery'
